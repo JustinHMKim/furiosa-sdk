@@ -7,12 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Introduction &mdash; FuriosaAI SDK Documentation  documentation</title>
+  <title>FuriosaAI C++ SDK &mdash; FuriosaAI SDK Documentation  documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/style.css" type="text/css" />
 
   
   
@@ -84,7 +85,7 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Introduction</a></li>
+<li><a class="reference internal" href="#">FuriosaAI C++ SDK</a></li>
 <li><a class="reference internal" href="#c-api-of-npu-engine">C API of NPU Engine</a><ul>
 <li><a class="reference internal" href="#sync-model">Sync Model</a><ul>
 <li><a class="reference internal" href="#example-of-sync-model">Example of Sync Model</a><ul>
@@ -96,7 +97,7 @@
 <li><a class="reference internal" href="#example-of-task-model">Example of Task Model</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
 </ul>
 </div>
             
@@ -145,7 +146,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>FuriosaAI C++ SDK</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,8 +165,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="furiosaai-c-sdk">
+<h1>FuriosaAI C++ SDK<a class="headerlink" href="#furiosaai-c-sdk" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="section" id="c-api-of-npu-engine">
 <h1>C API of NPU Engine<a class="headerlink" href="#c-api-of-npu-engine" title="Permalink to this headline">¶</a></h1>
@@ -331,8 +332,8 @@ cc sync_example.c -I<span class="si">${</span><span class="nv">NUX_DIR</span><sp
 </div>
 </div>
 </div>
-<div class="section" id="documentation">
-<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -1276,7 +1277,7 @@ cc sync_example.c -I<span class="si">${</span><span class="nv">NUX_DIR</span><sp
 <dt id="_CPPv424nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t">
 <span id="_CPPv324nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t"></span><span id="_CPPv224nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t"></span><span id="nux_async_session_create__nux_buffer_t.nux_buffer_len_t.nux_session_option_t.nux_async_session_tP.nux_completion_queue_tP"></span><span class="target" id="nux_8h_1a6d8b4d876c425963ecbc1812504c1ce9"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_async_session_create</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <em><span class="pre">model_binary</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">model_binary_len</span></em>, <a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <em><span class="pre">option</span></em>, <a class="reference internal" href="#_CPPv419nux_async_session_t" title="nux_async_session_t"><span class="pre">nux_async_session_t</span></a> <span class="pre">*</span><em><span class="pre">out_sess</span></em>, <a class="reference internal" href="#_CPPv422nux_completion_queue_t" title="nux_completion_queue_t"><span class="pre">nux_completion_queue_t</span></a> <span class="pre">*</span><em><span class="pre">out_queue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create an asynchronous session and a queue to receive the results. </p>
-<p><a class="reference internal" href="#nux_8h_1a2d592d21337f153b24799e8f565a7187"><span class="std std-ref">nux_async_session_t</span></a> allows users to submit inference tasks. <a class="reference internal" href="#nux_8h_1a1e7210100270e14e066156f45a7fe5b6"><span class="std std-ref">nux_completion_queue_t</span></a> is an iterator to receive the result in the asynchronous way. See also <a class="reference internal" href="#nux_8h_1a908c99ce9bb71a2802ee07241e372080"><span class="std std-ref">nux_async_session_run</span></a> and <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a>.</p>
+<p><a class="reference internal" href="#nux_8h_1a2d592d21337f153b24799e8f565a7187"><span class="std std-ref">nux_async_session_t</span></a> allows users to submit inference tasks. #nux_completion_queue_t is an iterator to receive the result in the asynchronous way. See also <a class="reference internal" href="#nux_8h_1a908c99ce9bb71a2802ee07241e372080"><span class="std std-ref">nux_async_session_run</span></a> and <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1294,7 +1295,7 @@ cc sync_example.c -I<span class="si">${</span><span class="nv">NUX_DIR</span><sp
 <dt id="_CPPv421nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t">
 <span id="_CPPv321nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t"></span><span id="_CPPv221nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t"></span><span id="nux_async_session_run__nux_async_session_t.nux_context_t.nux_tensor_array_t"></span><span class="target" id="nux_8h_1a908c99ce9bb71a2802ee07241e372080"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_async_session_run</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419nux_async_session_t" title="nux_async_session_t"><span class="pre">nux_async_session_t</span></a> <em><span class="pre">sess</span></em>, <a class="reference internal" href="#_CPPv413nux_context_t" title="nux_context_t"><span class="pre">nux_context_t</span></a> <em><span class="pre">context</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">inputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Submit an inference task asynchronously. It returns immediately. </p>
-<p>You can receive the completed inference results through <a class="reference internal" href="#nux_8h_1a1e7210100270e14e066156f45a7fe5b6"><span class="std std-ref">nux_completion_queue_t</span></a>. please refer to <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a> to know how to receive the completed results.</p>
+<p>You can receive the completed inference results through #nux_completion_queue_t. please refer to <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a> to know how to receive the completed results.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
