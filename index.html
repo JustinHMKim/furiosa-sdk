@@ -7,13 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>FuriosaAI C++ SDK &mdash; FuriosaAI SDK Documentation  documentation</title>
+  <title>Python SDK Documentation &mdash; FuriosaAI Python SDK  documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/style.css" type="text/css" />
 
   
   
@@ -52,7 +51,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> FuriosaAI SDK Documentation
+            <a href="#" class="icon icon-home"> FuriosaAI Python SDK
           
 
           
@@ -85,19 +84,13 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">FuriosaAI C++ SDK</a></li>
-<li><a class="reference internal" href="#c-api-of-npu-engine">C API of NPU Engine</a><ul>
-<li><a class="reference internal" href="#sync-model">Sync Model</a><ul>
-<li><a class="reference internal" href="#example-of-sync-model">Example of Sync Model</a><ul>
-<li><a class="reference internal" href="#task-model">Task Model</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#example-of-task-model">Example of Task Model</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#reference">Reference</a></li>
+<li><a class="reference internal" href="#">Python SDK Documentation</a></li>
+<li><a class="reference internal" href="#module-setup">Setup</a></li>
+<li><a class="reference internal" href="#module-config">Config</a></li>
+<li><a class="reference internal" href="#module-consts">Consts</a></li>
+<li><a class="reference internal" href="#module-quantizer">Quantizer</a></li>
+<li><a class="reference internal" href="#module-utils">Utils</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </div>
             
@@ -113,7 +106,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">FuriosaAI SDK Documentation</a>
+          <a href="#">FuriosaAI Python SDK</a>
         
       </nav>
 
@@ -146,7 +139,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>FuriosaAI C++ SDK</li>
+      <li>Python SDK Documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,1329 +158,127 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="furiosaai-c-sdk">
-<h1>FuriosaAI C++ SDK<a class="headerlink" href="#furiosaai-c-sdk" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="python-sdk-documentation">
+<h1>Python SDK Documentation<a class="headerlink" href="#python-sdk-documentation" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="c-api-of-npu-engine">
-<h1>C API of NPU Engine<a class="headerlink" href="#c-api-of-npu-engine" title="Permalink to this headline">¶</a></h1>
-<p>Nux is the C API library of the NPU Engine.
-Nux provides two methods to run inference tasks through the NPU.
-The following demonstrates the examples of two execution ways.
-If you want to see more details about API types and functions, please refer to ref nux.h.</p>
-<div class="section" id="sync-model">
-<h2>Sync Model<a class="headerlink" href="#sync-model" title="Permalink to this headline">¶</a></h2>
-<p>The sync model provides APIs to run a single inference task with a single input batch at a time.</p>
-<div class="section" id="example-of-sync-model">
-<h3>Example of Sync Model<a class="headerlink" href="#example-of-sync-model" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get the size of ENF file</span>
-<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">enf_path</span> <span class="o">=</span> <span class="s">&quot;&lt;a path of ENF file&gt;&quot;</span><span class="p">;</span>
-<span class="k">struct</span> <span class="nc">stat</span> <span class="n">st</span><span class="p">;</span>
-<span class="n">stat</span><span class="p">(</span><span class="n">enf_path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
-<span class="kt">size_t</span> <span class="n">enf_size</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span><span class="p">;</span>
-
-<span class="c1">// Read the ENF binary from the ENF file</span>
-<span class="kt">void</span> <span class="o">*</span><span class="n">enf_buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">enf_size</span><span class="p">);</span>
-<span class="kt">FILE</span> <span class="o">*</span><span class="n">enf_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">enf_path</span><span class="p">,</span> <span class="s">&quot;rb&quot;</span><span class="p">);</span>
-<span class="kt">size_t</span> <span class="n">read_item</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">enf_buf</span><span class="p">,</span> <span class="n">enf_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">enf_file</span><span class="p">);</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">read_item</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
-<span class="n">fclose</span><span class="p">(</span><span class="n">enf_file</span><span class="p">);</span>
-
-<span class="c1">// Initialize nux handle</span>
-<span class="n">nux_handle_t</span> <span class="n">nux</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">create_nux</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nux</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-<span class="c1">// Create a sync model</span>
-<span class="n">nux_sync_model_t</span> <span class="n">sync_model</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">nux_create_sync_model</span><span class="p">(</span><span class="n">nux</span><span class="p">,</span> <span class="n">binary_buf</span><span class="p">,</span> <span class="n">enf_size</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sync_model</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-<span class="c1">// Get the 0th input tensor from this model, and</span>
-<span class="c1">// A model can have more than one input tensor depending on its model design.</span>
-<span class="c1">// You can specify an index of input tensor to get your desired input tensor.</span>
-<span class="n">nux_tensor_t</span> <span class="n">input_tensor</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">model_input_tensor</span><span class="p">(</span><span class="n">sync_model</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">input_tensor</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-<span class="c1">// Fill the buffer of the input tensor with your data</span>
-<span class="c1">// Here, the input shape of the 0th input tensor is 1x28x28x1 in NxHxWxC,</span>
-<span class="c1">// and it has totally 784 elements. In this example, the buffer is filled with a fake data.</span>
-<span class="kt">uint8_t</span> <span class="n">input_buf</span> <span class="p">[</span><span class="mi">784</span><span class="p">]</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">0</span> <span class="p">...</span> <span class="mi">783</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">};</span>
-<span class="n">tensor_set_buffer</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">input_buf</span><span class="p">,</span> <span class="mi">784</span><span class="p">);</span>
-
-<span class="c1">// Get the 0th output tensor from the model</span>
-<span class="n">nux_tensor_t</span> <span class="n">output_tensor</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">model_output_tensor</span><span class="p">(</span><span class="n">sync_model</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">output_tensor</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-<span class="c1">// Run an inference task with the input data filled as above.</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">model_run</span><span class="p">(</span><span class="n">sync_model</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-<span class="c1">// Get the buffer of the 0th&#39;s output tensor.</span>
-<span class="c1">// output_buf will receive a pointer to the output tensor&#39;s buffer.</span>
-<span class="c1">// output_len will receive the length of the output buffer.</span>
-<span class="kt">uint8_t</span> <span class="o">*</span><span class="n">output_buf</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="kt">uintptr_t</span> <span class="n">output_len</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="n">tensor_get_buffer</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">output_buf</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">output_len</span><span class="p">);</span>
-
-<span class="c1">// Release resources</span>
-<span class="n">destroy_sync_model</span><span class="p">(</span><span class="n">sync_model</span><span class="p">);</span>
-<span class="n">destroy_nux</span><span class="p">(</span><span class="n">nux</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="section" id="task-model">
-<h4>Task Model<a class="headerlink" href="#task-model" title="Permalink to this headline">¶</a></h4>
-<p>The task model provides APIs to run multiple inference tasks asynchronously and simultaneously.
-The callback functions defined by users will be called when each task is completed.
-When a user creates a task model, the user can configure the concurrency of running tasks
-depending on HW capacity.</p>
-</div>
-</div>
-</div>
-<div class="section" id="example-of-task-model">
-<h2>Example of Task Model<a class="headerlink" href="#example-of-task-model" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Define three callback functions for a task model</span>
-<span class="kt">void</span> <span class="nf">my_nux_output_cb</span><span class="p">(</span><span class="n">nux_request_id_t</span> <span class="n">id</span><span class="p">,</span>
-                      <span class="n">nux_output_index_t</span> <span class="n">out_id</span><span class="p">,</span>
-                      <span class="n">nux_buffer_t</span> <span class="n">buf</span><span class="p">,</span>
-                      <span class="n">nux_buffer_len_t</span> <span class="n">buf_len</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// fill your logic</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">my_error_cb</span><span class="p">(</span><span class="n">nux_request_id_t</span> <span class="n">id</span><span class="p">,</span> <span class="n">nux_error_t</span> <span class="n">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// fill your logic</span>
-<span class="p">}</span>
-<span class="kt">void</span> <span class="nf">my_finish_cb</span><span class="p">(</span><span class="n">nux_request_id_t</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// fill your logic</span>
-<span class="p">}</span>
-
-
-<span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// Get the size of ENF file</span>
-    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">enf_path</span> <span class="o">=</span> <span class="s">&quot;&lt;a path of ENF file&gt;&quot;</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="nc">stat</span> <span class="n">st</span><span class="p">;</span>
-    <span class="n">stat</span><span class="p">(</span><span class="n">enf_path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
-    <span class="kt">size_t</span> <span class="n">enf_size</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span><span class="p">;</span>
-
-    <span class="c1">// Read the ENF binary from the ENF file</span>
-    <span class="kt">void</span> <span class="o">*</span><span class="n">enf_buf</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">enf_size</span><span class="p">);</span>
-    <span class="kt">FILE</span> <span class="o">*</span><span class="n">enf_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">enf_path</span><span class="p">,</span> <span class="s">&quot;rb&quot;</span><span class="p">);</span>
-    <span class="kt">size_t</span> <span class="n">read_item</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">enf_buf</span><span class="p">,</span> <span class="n">enf_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">enf_file</span><span class="p">);</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">read_item</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">fclose</span><span class="p">(</span><span class="n">enf_file</span><span class="p">);</span>
-
-    <span class="c1">// Create a nux handle</span>
-    <span class="n">nux_handle_t</span> <span class="n">nux</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">create_nux</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nux</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-    <span class="c1">// Create a task model with 3 max concurrency</span>
-    <span class="n">nux_task_model_t</span> <span class="n">task_model</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">max_concurrency</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">nux_create_task_model</span><span class="p">(</span><span class="n">nux</span><span class="p">,</span> <span class="n">enf_buf</span><span class="p">,</span> <span class="n">enf_size</span><span class="p">,</span> <span class="n">max_concurrency</span><span class="p">,</span>
-           <span class="n">my_nux_output_cb</span><span class="p">,</span> <span class="n">my_error_cb</span><span class="p">,</span> <span class="n">my_finish_cb</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">task_model</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-    <span class="c1">// Get a single task which allows your code to request a single asynchronous inference task.</span>
-    <span class="c1">// Depending on the concurrency, you can get multiple tasks at the same time.</span>
-    <span class="c1">// In this case, you can request multiple tasks simultaneously.</span>
-    <span class="c1">// If there&#39;s no available task slot, calling task_model_get_task will be blocked</span>
-    <span class="c1">// until new available task comes out.</span>
-    <span class="n">nux_task_t</span> <span class="n">task1</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">task_model_get_task</span><span class="p">(</span><span class="n">task_model</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">task1</span><span class="p">)</span> <span class="o">==</span> <span class="n">nux_error_t_success</span><span class="p">);</span>
-
-    <span class="c1">// Fill the buffer of the 0th input tensor with your data.</span>
-    <span class="c1">// Here, the input shape of the 0th input tensor is 1x28x28x1 in NxHxWxC,</span>
-    <span class="c1">// and it has totally 784 elements.</span>
-    <span class="k">const</span> <span class="kt">uintptr_t</span> <span class="n">INPUT_SIZE</span> <span class="o">=</span> <span class="mi">784</span><span class="p">;</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">task_input_size</span><span class="p">(</span><span class="n">task1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">INPUT_SIZE</span><span class="p">);</span>
-    <span class="c1">// It&#39;s a fake data. Please fill this buffer with yours.</span>
-    <span class="kt">uint8_t</span> <span class="n">input_buf</span> <span class="p">[</span><span class="mi">784</span><span class="p">]</span> <span class="o">=</span> <span class="p">{[</span><span class="mi">0</span> <span class="p">...</span> <span class="mi">783</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">};</span>
-    <span class="c1">// Get a mutable buffer of the 0th input tensor from task1</span>
-    <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span> <span class="o">=</span> <span class="n">task_input</span><span class="p">(</span><span class="n">task1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="c1">// Copy your data to the buffer</span>
-    <span class="n">memcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">input_buf</span><span class="p">,</span> <span class="n">INPUT_SIZE</span><span class="p">);</span>
-
-    <span class="c1">// Submit the task1 with an arbitrary req_id,</span>
-    <span class="c1">// which will be passed to callback functions to identify some context.</span>
-    <span class="n">RequestId</span> <span class="n">req_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">task_execute</span><span class="p">(</span><span class="n">task1</span><span class="p">,</span> <span class="n">req_id</span><span class="p">);</span>
-
-    <span class="c1">// Wait for until all submitted tasks are completed</span>
-    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">task_model_is_all_task_done</span><span class="p">(</span><span class="n">task_model</span><span class="p">))</span> <span class="p">{</span>
-        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Release resources</span>
-    <span class="n">destroy_task_model</span><span class="p">(</span><span class="n">task_model</span><span class="p">);</span>
-    <span class="n">destroy_nux</span><span class="p">(</span><span class="n">nux</span><span class="p">);</span>
-    <span class="n">free</span><span class="p">(</span><span class="n">enf_buf</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>To build your source code with Nux, please follow:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">NPU_TOOLS_DIR</span><span class="o">=</span><span class="s2">&quot;&lt;npu-tools src dir&gt;&quot;</span>
-<span class="nb">export</span> <span class="nv">NUX_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">NPU_TOOLS_DIR</span><span class="si">}</span>/crates/nux
-cargo build --release --target x86_64-unknown-linux-gnu
-cc sync_example.c -I<span class="si">${</span><span class="nv">NUX_DIR</span><span class="si">}</span>/include -L<span class="si">${</span><span class="nv">NPU_TOOLS_DIR</span><span class="si">}</span>/target/x86_64-unknown-linux-gnu/release -lnux
-</pre></div>
-</div>
-<p>The following commands will generate a Doxygen document at <code class="docutils literal notranslate"><span class="pre">$NUX_TOOLS_DIR/target/doxygen/html</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">nux</span> <span class="n">src</span> <span class="n">root</span><span class="o">&gt;</span>
-<span class="n">doxygen</span> <span class="n">crates</span><span class="o">/</span><span class="n">nux</span><span class="o">/</span><span class="n">Doxyfile</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
-<dl class="cpp macro">
-<dt id="c.furiosa_libnux_bindings_h">
-<span class="target" id="nux_8h_1a681b66b42eec28d72c6f598a35bb6744"></span><code class="sig-name descname"><span class="pre">furiosa_libnux_bindings_h</span></code><a class="headerlink" href="#c.furiosa_libnux_bindings_h" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
-<dl class="cpp type">
-<dt>
-<span class="target" id="nux_8h_1a5bd8a6aaa5c2220ca1e5703255fad8d3"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv44Axis" title="Axis"><span class="pre">Axis</span></a> <code class="sig-name descname"><span class="pre">Axis</span></code><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt>
-<span class="target" id="nux_8h_1a68bc22b91cf23fca3c489bfc55d97b6c"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv414TensorDataType" title="TensorDataType"><span class="pre">TensorDataType</span></a> <code class="sig-name descname"><span class="pre">TensorDataType</span></code><br /></dt>
-<dd><p>Represent tensor data type. </p>
+<div class="section" id="module-setup">
+<span id="setup"></span><h1>Setup<a class="headerlink" href="#module-setup" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="setup.Develop">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">setup.</span></code><code class="sig-name descname"><span class="pre">Develop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#setup.Develop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces removal of providers in editable mode.</p>
+<dl class="py method">
+<dt id="setup.Develop.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setup.Develop.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>A command’s raison d’etre: carry out the action it exists to
+perform, controlled by the options initialized in
+‘initialize_options()’, customized by other commands, the setup
+script, the command-line, and config files, and finalized in
+‘finalize_options()’.  All terminal output and filesystem
+interaction should be done by ‘run()’.</p>
+<p>This method must be implemented by all command classes.</p>
 </dd></dl>
 
-<dl class="cpp type">
-<dt>
-<span class="target" id="nux_8h_1ade952388e21da3a09cdcef180e1b8846"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_error_t</span></code><br /></dt>
-<dd><p>Represent a return status of a function that can fail. </p>
 </dd></dl>
 
-<dl class="cpp type">
-<dt id="_CPPv415BlockingSession">
-<span id="_CPPv315BlockingSession"></span><span id="_CPPv215BlockingSession"></span><span id="BlockingSession"></span><span class="target" id="nux_8h_1ae09f8d965dfcff84b67c46649a327e11"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv415BlockingSession" title="BlockingSession"><span class="pre">BlockingSession</span></a> <code class="sig-name descname"><span class="pre">BlockingSession</span></code><a class="headerlink" href="#_CPPv415BlockingSession" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv426CompletionQueue_ContextPtr">
-<span id="_CPPv326CompletionQueue_ContextPtr"></span><span id="_CPPv226CompletionQueue_ContextPtr"></span><span id="CompletionQueue_ContextPtr"></span><span class="target" id="nux_8h_1abcf58bd7a84492e3fbca5cac05ee5cf7"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv426CompletionQueue_ContextPtr" title="CompletionQueue_ContextPtr"><span class="pre">CompletionQueue_ContextPtr</span></a> <code class="sig-name descname"><span class="pre">CompletionQueue_ContextPtr</span></code><a class="headerlink" href="#_CPPv426CompletionQueue_ContextPtr" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv45Model">
-<span id="_CPPv35Model"></span><span id="_CPPv25Model"></span><span id="Model"></span><span class="target" id="nux_8h_1abcd4549833a89453835e140c870d93bc"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv45Model" title="Model"><span class="pre">Model</span></a> <code class="sig-name descname"><span class="pre">Model</span></code><a class="headerlink" href="#_CPPv45Model" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv43Nux">
-<span id="_CPPv33Nux"></span><span id="_CPPv23Nux"></span><span id="Nux"></span><span class="target" id="nux_8h_1aa958a4d7291f128984712c3a6f5de32b"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv43Nux" title="Nux"><span class="pre">Nux</span></a> <code class="sig-name descname"><span class="pre">Nux</span></code><a class="headerlink" href="#_CPPv43Nux" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv48NuxModel">
-<span id="_CPPv38NuxModel"></span><span id="_CPPv28NuxModel"></span><span id="NuxModel"></span><span class="target" id="nux_8h_1a494196375804bddf6a395336ae8e421e"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48NuxModel" title="NuxModel"><span class="pre">NuxModel</span></a> <code class="sig-name descname"><span class="pre">NuxModel</span></code><a class="headerlink" href="#_CPPv48NuxModel" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv412OpaqueTensor">
-<span id="_CPPv312OpaqueTensor"></span><span id="_CPPv212OpaqueTensor"></span><span id="OpaqueTensor"></span><span class="target" id="nux_8h_1a429feb7ac4e86fef4aaad420b410f580"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv412OpaqueTensor" title="OpaqueTensor"><span class="pre">OpaqueTensor</span></a> <code class="sig-name descname"><span class="pre">OpaqueTensor</span></code><a class="headerlink" href="#_CPPv412OpaqueTensor" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv414SessionOptions">
-<span id="_CPPv314SessionOptions"></span><span id="_CPPv214SessionOptions"></span><span id="SessionOptions"></span><span class="target" id="nux_8h_1af40f150c63b3221771c0b0f7a0b3970c"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv414SessionOptions" title="SessionOptions"><span class="pre">SessionOptions</span></a> <code class="sig-name descname"><span class="pre">SessionOptions</span></code><a class="headerlink" href="#_CPPv414SessionOptions" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv420Submitter_ContextPtr">
-<span id="_CPPv320Submitter_ContextPtr"></span><span id="_CPPv220Submitter_ContextPtr"></span><span id="Submitter_ContextPtr"></span><span class="target" id="nux_8h_1ac5e486ae1ad7b7c82ab40678b63963ca"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv420Submitter_ContextPtr" title="Submitter_ContextPtr"><span class="pre">Submitter_ContextPtr</span></a> <code class="sig-name descname"><span class="pre">Submitter_ContextPtr</span></code><a class="headerlink" href="#_CPPv420Submitter_ContextPtr" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv44Task">
-<span id="_CPPv34Task"></span><span id="_CPPv24Task"></span><span id="Task"></span><span class="target" id="nux_8h_1a1d107d116293b1dddca4e5d3d2898d00"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv44Task" title="Task"><span class="pre">Task</span></a> <code class="sig-name descname"><span class="pre">Task</span></code><a class="headerlink" href="#_CPPv44Task" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv49TaskModel">
-<span id="_CPPv39TaskModel"></span><span id="_CPPv29TaskModel"></span><span id="TaskModel"></span><span class="target" id="nux_8h_1a8b40e325bbe7a15aa90ca20773222b51"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv49TaskModel" title="TaskModel"><span class="pre">TaskModel</span></a> <code class="sig-name descname"><span class="pre">TaskModel</span></code><a class="headerlink" href="#_CPPv49TaskModel" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv411TensorArray">
-<span id="_CPPv311TensorArray"></span><span id="_CPPv211TensorArray"></span><span id="TensorArray"></span><span class="target" id="nux_8h_1afa084064407a1cc227720de3acc637b1"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv411TensorArray" title="TensorArray"><span class="pre">TensorArray</span></a> <code class="sig-name descname"><span class="pre">TensorArray</span></code><a class="headerlink" href="#_CPPv411TensorArray" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv410TensorDesc">
-<span id="_CPPv310TensorDesc"></span><span id="_CPPv210TensorDesc"></span><span id="TensorDesc"></span><span class="target" id="nux_8h_1af6dc7410f18450866128d43def497145"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv410TensorDesc" title="TensorDesc"><span class="pre">TensorDesc</span></a> <code class="sig-name descname"><span class="pre">TensorDesc</span></code><a class="headerlink" href="#_CPPv410TensorDesc" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv412nux_handle_t">
-<span id="_CPPv312nux_handle_t"></span><span id="_CPPv212nux_handle_t"></span><span id="nux_handle_t"></span><span class="target" id="nux_8h_1a8aaa845d62c8e2ba0b08492ad4312b4a"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv43Nux" title="Nux"><span class="pre">Nux</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_handle_t</span></code><a class="headerlink" href="#_CPPv412nux_handle_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Nux handle. </p>
-<p><a class="reference internal" href="#nux_8h_1ae68b58f43d3a93f6edf9d0c0bea56e6b"><span class="std std-ref">create_nux</span></a> initializes an instance of <a class="reference internal" href="#nux_8h_1a8aaa845d62c8e2ba0b08492ad4312b4a"><span class="std std-ref">nux_handle_t</span></a>. </p>
+<dl class="py function">
+<dt id="setup.git_version">
+<code class="sig-prename descclassname"><span class="pre">setup.</span></code><code class="sig-name descname"><span class="pre">git_version</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#setup.git_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a version to identify the state of the underlying git repo. The version will
+indicate whether the head of the current git-backed working directory is tied to a
+release tag or not : it will indicate the former with a ‘release:{version}’ prefix
+and the latter with a ‘dev0’ prefix. Following the prefix will be a sha of the current
+branch head. Finally, a “dirty” suffix is appended to indicate that uncommitted
+changes are present.
+:param str <a href="#id1"><span class="problematic" id="id2">version_</span></a>: Semver version
+:return: Found Furiosa SDK version in Git repo
+:rtype: str</p>
 </dd></dl>
 
-<dl class="cpp type">
-<dt id="_CPPv416nux_buffer_len_t">
-<span id="_CPPv316nux_buffer_len_t"></span><span id="_CPPv216nux_buffer_len_t"></span><span id="nux_buffer_len_t"></span><span class="target" id="nux_8h_1aed964c658135b64a4615538f6d3fe673"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_buffer_len_t</span></code><a class="headerlink" href="#_CPPv416nux_buffer_len_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Byte length of a data buffer. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv416nux_sync_model_t">
-<span id="_CPPv316nux_sync_model_t"></span><span id="_CPPv216nux_sync_model_t"></span><span id="nux_sync_model_t"></span><span class="target" id="nux_8h_1a2658304913df93888e11892bc40ea34f"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv45Model" title="Model"><span class="pre">Model</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_sync_model_t</span></code><a class="headerlink" href="#_CPPv416nux_sync_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Handle of a synchronous model. </p>
-<p><a class="reference internal" href="#nux_8h_1a0a8c9bb5290414fa8c50a4225a41cd68"><span class="std std-ref">nux_create_sync_model</span></a> initializes an instance of <a class="reference internal" href="#nux_8h_1a2658304913df93888e11892bc40ea34f"><span class="std std-ref">nux_sync_model_t</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv412nux_tensor_t">
-<span id="_CPPv312nux_tensor_t"></span><span id="_CPPv212nux_tensor_t"></span><span id="nux_tensor_t"></span><span class="target" id="nux_8h_1a94b4b218d26fecf1b1a4e3b102484b4c"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv412OpaqueTensor" title="OpaqueTensor"><span class="pre">OpaqueTensor</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_tensor_t</span></code><a class="headerlink" href="#_CPPv412nux_tensor_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Handle of tensor. </p>
-<p><a class="reference internal" href="#nux_8h_1a80b727e0c054b2db830808b882f68305"><span class="std std-ref">model_input_tensor</span></a> or <a class="reference internal" href="#nux_8h_1af8a884f8271dddc703f18103a56157ba"><span class="std std-ref">model_output_tensor</span></a> returns an instance of <a class="reference internal" href="#nux_8h_1a94b4b218d26fecf1b1a4e3b102484b4c"><span class="std std-ref">nux_tensor_t</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv412nux_buffer_t">
-<span id="_CPPv312nux_buffer_t"></span><span id="_CPPv212nux_buffer_t"></span><span id="nux_buffer_t"></span><span class="target" id="nux_8h_1af81df491b6c3789d07e01f08a7bebca7"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint8_t</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_buffer_t</span></code><a class="headerlink" href="#_CPPv412nux_buffer_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Pointer to a data buffer. </p>
-<p>In Nux, it is commonly used to contain any kind of binary data like ENF binary, or a data buffer of input/output tensors. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv49RequestId">
-<span id="_CPPv39RequestId"></span><span id="_CPPv29RequestId"></span><span id="RequestId"></span><span class="target" id="nux_8h_1a801df2cce56ae7c45688df15e2960019"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">RequestId</span></code><a class="headerlink" href="#_CPPv49RequestId" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv416nux_request_id_t">
-<span id="_CPPv316nux_request_id_t"></span><span id="_CPPv216nux_request_id_t"></span><span id="nux_request_id_t"></span><span class="target" id="nux_8h_1a85c8a2e016cba474b1d72a43be2658b8"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv49RequestId" title="RequestId"><span class="pre">RequestId</span></a> <code class="sig-name descname"><span class="pre">nux_request_id_t</span></code><a class="headerlink" href="#_CPPv416nux_request_id_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Identifier to distinguish tasks in a task model. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv411OutputIndex">
-<span id="_CPPv311OutputIndex"></span><span id="_CPPv211OutputIndex"></span><span id="OutputIndex"></span><span class="target" id="nux_8h_1a84e308e70103e31e4f1cbe9defc908e0"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">OutputIndex</span></code><a class="headerlink" href="#_CPPv411OutputIndex" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv418nux_output_index_t">
-<span id="_CPPv318nux_output_index_t"></span><span id="_CPPv218nux_output_index_t"></span><span id="nux_output_index_t"></span><span class="target" id="nux_8h_1a2a467bd31283be58e2c7e1f081d39389"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv411OutputIndex" title="OutputIndex"><span class="pre">OutputIndex</span></a> <code class="sig-name descname"><span class="pre">nux_output_index_t</span></code><a class="headerlink" href="#_CPPv418nux_output_index_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Index of an output tensor, used in task model. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv421nux_output_callback_t">
-<span id="_CPPv321nux_output_callback_t"></span><span id="_CPPv221nux_output_callback_t"></span><span id="nux_output_callback_t"></span><span class="target" id="nux_8h_1a4bf21e12388c35aa93937f3ef11b2d58"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_output_callback_t</span></code><span class="pre">)</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_request_id_t" title="nux_request_id_t"><span class="pre">nux_request_id_t</span></a>, <a class="reference internal" href="#_CPPv418nux_output_index_t" title="nux_output_index_t"><span class="pre">nux_output_index_t</span></a>, <a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_output_callback_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Callback function called per tensor output when a task of a task model is completed. </p>
-<p>For example, if one model has 2 output tensors, this function will be called 2 times upon each task’s completion. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv420nux_error_callback_t">
-<span id="_CPPv320nux_error_callback_t"></span><span id="_CPPv220nux_error_callback_t"></span><span id="nux_error_callback_t"></span><span class="target" id="nux_8h_1a1ef90898a20c09267ebb0cd6ba4bc005"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_error_callback_t</span></code><span class="pre">)</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_request_id_t" title="nux_request_id_t"><span class="pre">nux_request_id_t</span></a>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420nux_error_callback_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Callback function called when a task fails to complete. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv421nux_finish_callback_t">
-<span id="_CPPv321nux_finish_callback_t"></span><span id="_CPPv221nux_finish_callback_t"></span><span id="nux_finish_callback_t"></span><span class="target" id="nux_8h_1ac59137484096663432e27c8e85d74eb4"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_finish_callback_t</span></code><span class="pre">)</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_request_id_t" title="nux_request_id_t"><span class="pre">nux_request_id_t</span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_finish_callback_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Callback function which is finally called when a task is completed. </p>
-<p>Unlike <a class="reference internal" href="#nux_8h_1a4bf21e12388c35aa93937f3ef11b2d58"><span class="std std-ref">nux_output_callback_t</span></a>, this callback function is called only once after <a class="reference internal" href="#nux_8h_1a4bf21e12388c35aa93937f3ef11b2d58"><span class="std std-ref">nux_output_callback_t</span></a> is called for all output tensors. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv416nux_task_model_t">
-<span id="_CPPv316nux_task_model_t"></span><span id="_CPPv216nux_task_model_t"></span><span id="nux_task_model_t"></span><span class="target" id="nux_8h_1a2a9df2cca7933d9a992ff02f18f7b32e"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv49TaskModel" title="TaskModel"><span class="pre">TaskModel</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_task_model_t</span></code><a class="headerlink" href="#_CPPv416nux_task_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Handle of a task model. </p>
-<p><a class="reference internal" href="#nux_8h_1a0842cc2b55b567e39a175b287690b833"><span class="std std-ref">nux_create_task_model</span></a> creates an instance of <a class="reference internal" href="#nux_8h_1a2a9df2cca7933d9a992ff02f18f7b32e"><span class="std std-ref">nux_task_model_t</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv410nux_task_t">
-<span id="_CPPv310nux_task_t"></span><span id="_CPPv210nux_task_t"></span><span id="nux_task_t"></span><span class="target" id="nux_8h_1acce67ab377db47043a0ae0f1e50e38e1"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv44Task" title="Task"><span class="pre">Task</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_task_t</span></code><a class="headerlink" href="#_CPPv410nux_task_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Handle of a task of a task model. </p>
-<p><a class="reference internal" href="#nux_8h_1a2a325d501f34c8d3047b17a5acd8f54c"><span class="std std-ref">task_model_get_task</span></a> or <a class="reference internal" href="#nux_8h_1a7c462db4b3b7d698d08585e84f39dce7"><span class="std std-ref">task_model_try_get_task</span></a> returns an instance of <a class="reference internal" href="#nux_8h_1acce67ab377db47043a0ae0f1e50e38e1"><span class="std std-ref">nux_task_t</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv410InputIndex">
-<span id="_CPPv310InputIndex"></span><span id="_CPPv210InputIndex"></span><span id="InputIndex"></span><span class="target" id="nux_8h_1a0c7fb2387ac54ca2d3778c5ad4e88b98"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">InputIndex</span></code><a class="headerlink" href="#_CPPv410InputIndex" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv417nux_input_index_t">
-<span id="_CPPv317nux_input_index_t"></span><span id="_CPPv217nux_input_index_t"></span><span id="nux_input_index_t"></span><span class="target" id="nux_8h_1a7cb3fb8e947fec1309ec86fe1a5cfe9a"></span><em class="property"><span class="pre">typedef</span> </em><a class="reference internal" href="#_CPPv410InputIndex" title="InputIndex"><span class="pre">InputIndex</span></a> <code class="sig-name descname"><span class="pre">nux_input_index_t</span></code><a class="headerlink" href="#_CPPv417nux_input_index_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Index of an input tensor, used in task model. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv420nux_session_option_t">
-<span id="_CPPv320nux_session_option_t"></span><span id="_CPPv220nux_session_option_t"></span><span id="nux_session_option_t"></span><span class="target" id="nux_8h_1ad152e5d6c7a9d7057a1a39618f570043"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv414SessionOptions" title="SessionOptions"><span class="pre">SessionOptions</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_session_option_t</span></code><a class="headerlink" href="#_CPPv420nux_session_option_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Session option. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv413nux_session_t">
-<span id="_CPPv313nux_session_t"></span><span id="_CPPv213nux_session_t"></span><span id="nux_session_t"></span><span class="target" id="nux_8h_1acd038b1ce951e25bc8e9d0e9b33393c8"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv415BlockingSession" title="BlockingSession"><span class="pre">BlockingSession</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_session_t</span></code><a class="headerlink" href="#_CPPv413nux_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Session. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv411nux_model_t">
-<span id="_CPPv311nux_model_t"></span><span id="_CPPv211nux_model_t"></span><span id="nux_model_t"></span><span class="target" id="nux_8h_1afb640feeb31a1f4c6a7d0277d8767c36"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv48NuxModel" title="NuxModel"><span class="pre">NuxModel</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_model_t</span></code><a class="headerlink" href="#_CPPv411nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Model. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv418nux_tensor_array_t">
-<span id="_CPPv318nux_tensor_array_t"></span><span id="_CPPv218nux_tensor_array_t"></span><span id="nux_tensor_array_t"></span><span class="target" id="nux_8h_1a2f341727cc29901eee60cf6dc703d4d2"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv411TensorArray" title="TensorArray"><span class="pre">TensorArray</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_tensor_array_t</span></code><a class="headerlink" href="#_CPPv418nux_tensor_array_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv419nux_async_session_t">
-<span id="_CPPv319nux_async_session_t"></span><span id="_CPPv219nux_async_session_t"></span><span id="nux_async_session_t"></span><span class="target" id="nux_8h_1a2d592d21337f153b24799e8f565a7187"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv420Submitter_ContextPtr" title="Submitter_ContextPtr"><span class="pre">Submitter_ContextPtr</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_async_session_t</span></code><a class="headerlink" href="#_CPPv419nux_async_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Async Session. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv422nux_completion_queue_t">
-<span id="_CPPv322nux_completion_queue_t"></span><span id="_CPPv222nux_completion_queue_t"></span><span id="nux_completion_queue_t"></span><span class="target" id="nux_8h_1a1e7210100270e14e066156f45a7fe5b6"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv426CompletionQueue_ContextPtr" title="CompletionQueue_ContextPtr"><span class="pre">CompletionQueue_ContextPtr</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_completion_queue_t</span></code><a class="headerlink" href="#_CPPv422nux_completion_queue_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv413nux_context_t">
-<span id="_CPPv313nux_context_t"></span><span id="_CPPv213nux_context_t"></span><span id="nux_context_t"></span><span class="target" id="nux_8h_1af748dc0957775e74dde2c99baf34d19c"></span><em class="property"><span class="pre">typedef</span> </em><span class="pre">void</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_context_t</span></code><a class="headerlink" href="#_CPPv413nux_context_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Context pointer. </p>
-</dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv417nux_tensor_desc_t">
-<span id="_CPPv317nux_tensor_desc_t"></span><span id="_CPPv217nux_tensor_desc_t"></span><span id="nux_tensor_desc_t"></span><span class="target" id="nux_8h_1a9d5ab6277eb5b7875699cfc28456268b"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv410TensorDesc" title="TensorDesc"><span class="pre">TensorDesc</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_tensor_desc_t</span></code><a class="headerlink" href="#_CPPv417nux_tensor_desc_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt id="_CPPv418nux_tensor_dtype_t">
-<span id="_CPPv318nux_tensor_dtype_t"></span><span id="_CPPv218nux_tensor_dtype_t"></span><span id="nux_tensor_dtype_t"></span><span class="target" id="nux_8h_1a9df1cb134bb76b907cb3ba80412ffac6"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv414TensorDataType" title="TensorDataType"><span class="pre">TensorDataType</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_dtype_t</span></code><a class="headerlink" href="#_CPPv418nux_tensor_dtype_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Represent a data type of tensor. </p>
+<dl class="py function">
+<dt id="setup.write_version">
+<code class="sig-prename descclassname"><span class="pre">setup.</span></code><code class="sig-name descname"><span class="pre">write_version</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'/home/justinkim/Desktop/furiosa-sdk/python/furiosa-sdk/furiosa/git_version'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#setup.write_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the Semver version + git hash to file, e.g. “.dev0+2f635dc265e78db6708f59f68e8009abb92c1e65”.
+:param str filename: Destination file to write</p>
 </dd></dl>
 
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
-<dl class="cpp enum">
-<dt id="_CPPv44Axis">
-<span id="_CPPv34Axis"></span><span id="_CPPv24Axis"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8e"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">Axis</span></code><a class="headerlink" href="#_CPPv44Axis" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis10axis_widthE">
-<span id="_CPPv3N4Axis10axis_widthE"></span><span id="_CPPv2N4Axis10axis_widthE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8ea7cb7076bf378f9df948edffa5ab2f68e"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_width</span></code><a class="headerlink" href="#_CPPv4N4Axis10axis_widthE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis11axis_heightE">
-<span id="_CPPv3N4Axis11axis_heightE"></span><span id="_CPPv2N4Axis11axis_heightE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8eac5b20039b6ffebcce9a57f3e8a52a32e"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_height</span></code><a class="headerlink" href="#_CPPv4N4Axis11axis_heightE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis12axis_channelE">
-<span id="_CPPv3N4Axis12axis_channelE"></span><span id="_CPPv2N4Axis12axis_channelE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8ea1d9228549e8e981a783052c0e6404c95"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_channel</span></code><a class="headerlink" href="#_CPPv4N4Axis12axis_channelE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>For convolution weights, this axis is also known as an input channel. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis10axis_batchE">
-<span id="_CPPv3N4Axis10axis_batchE"></span><span id="_CPPv2N4Axis10axis_batchE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8ea120cc55f68810d6249094cff3b24fd31"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_batch</span></code><a class="headerlink" href="#_CPPv4N4Axis10axis_batchE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>For convolution weights, this axis is also known as an output channel or feature map. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis16axis_width_outerE">
-<span id="_CPPv3N4Axis16axis_width_outerE"></span><span id="_CPPv2N4Axis16axis_width_outerE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8ea6705276bc6fa76c2f7464a58234d7f21"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_width_outer</span></code><a class="headerlink" href="#_CPPv4N4Axis16axis_width_outerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis17axis_height_outerE">
-<span id="_CPPv3N4Axis17axis_height_outerE"></span><span id="_CPPv2N4Axis17axis_height_outerE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8eaa6b8011b2b1fc2d8888c3242b4c84da1"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_height_outer</span></code><a class="headerlink" href="#_CPPv4N4Axis17axis_height_outerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis18axis_channel_outerE">
-<span id="_CPPv3N4Axis18axis_channel_outerE"></span><span id="_CPPv2N4Axis18axis_channel_outerE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8eaf994c2f5f4264dd6dad6299704d36da8"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_channel_outer</span></code><a class="headerlink" href="#_CPPv4N4Axis18axis_channel_outerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis16axis_batch_outerE">
-<span id="_CPPv3N4Axis16axis_batch_outerE"></span><span id="_CPPv2N4Axis16axis_batch_outerE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8eaae8d7d5a3e6713beca2c4c1839482cd1"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_batch_outer</span></code><a class="headerlink" href="#_CPPv4N4Axis16axis_batch_outerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N4Axis12axis_unknownE">
-<span id="_CPPv3N4Axis12axis_unknownE"></span><span id="_CPPv2N4Axis12axis_unknownE"></span><span class="target" id="nux_8h_1ae3996976d8ffb3e58d88f58227473f8ea2fae774f747ab177f7dc750ea0a87ed6"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">axis_unknown</span></code><a class="headerlink" href="#_CPPv4N4Axis12axis_unknownE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="cpp enum">
-<dt id="_CPPv414TensorDataType">
-<span id="_CPPv314TensorDataType"></span><span id="_CPPv214TensorDataType"></span><span class="target" id="nux_8h_1a371006fb2e9b32996c00702ebe110510"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">TensorDataType</span></code><a class="headerlink" href="#_CPPv414TensorDataType" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Represent tensor data type. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt id="_CPPv4N14TensorDataType24tensor_data_type_float32E">
-<span id="_CPPv3N14TensorDataType24tensor_data_type_float32E"></span><span id="_CPPv2N14TensorDataType24tensor_data_type_float32E"></span><span class="target" id="nux_8h_1a371006fb2e9b32996c00702ebe110510a51ddd6299a05a2bb95943572e20a9401"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">tensor_data_type_float32</span></code><a class="headerlink" href="#_CPPv4N14TensorDataType24tensor_data_type_float32E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N14TensorDataType22tensor_data_type_uint8E">
-<span id="_CPPv3N14TensorDataType22tensor_data_type_uint8E"></span><span id="_CPPv2N14TensorDataType22tensor_data_type_uint8E"></span><span class="target" id="nux_8h_1a371006fb2e9b32996c00702ebe110510acbae55d9a4c3f4153c6054225e90a2e8"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">tensor_data_type_uint8</span></code><a class="headerlink" href="#_CPPv4N14TensorDataType22tensor_data_type_uint8E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N14TensorDataType21tensor_data_type_int8E">
-<span id="_CPPv3N14TensorDataType21tensor_data_type_int8E"></span><span id="_CPPv2N14TensorDataType21tensor_data_type_int8E"></span><span class="target" id="nux_8h_1a371006fb2e9b32996c00702ebe110510a60207aaf27dbd459c39aea7dfdf2a770"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">tensor_data_type_int8</span></code><a class="headerlink" href="#_CPPv4N14TensorDataType21tensor_data_type_int8E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N14TensorDataType22tensor_data_type_int32E">
-<span id="_CPPv3N14TensorDataType22tensor_data_type_int32E"></span><span id="_CPPv2N14TensorDataType22tensor_data_type_int32E"></span><span class="target" id="nux_8h_1a371006fb2e9b32996c00702ebe110510ae10f085574335f522e22809c1fd59436"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">tensor_data_type_int32</span></code><a class="headerlink" href="#_CPPv4N14TensorDataType22tensor_data_type_int32E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="cpp enum">
-<dt id="_CPPv411nux_error_t">
-<span id="_CPPv311nux_error_t"></span><span id="_CPPv211nux_error_t"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03"></span><em class="property"><span class="pre">enum</span> </em><code class="sig-name descname"><span class="pre">nux_error_t</span></code><a class="headerlink" href="#_CPPv411nux_error_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Represent a return status of a function that can fail. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t19nux_error_t_successE">
-<span id="_CPPv3N11nux_error_t19nux_error_t_successE"></span><span id="_CPPv2N11nux_error_t19nux_error_t_successE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9ed6c5025d2d89b340cd46185d394b3a"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_success</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t19nux_error_t_successE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When a function call is successful </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t31nux_error_t_nux_creation_failedE">
-<span id="_CPPv3N11nux_error_t31nux_error_t_nux_creation_failedE"></span><span id="_CPPv2N11nux_error_t31nux_error_t_nux_creation_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03afe4023c8cd3c553d0ac0787a403a18ca"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_nux_creation_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t31nux_error_t_nux_creation_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When <a class="reference internal" href="#nux_8h_1ae68b58f43d3a93f6edf9d0c0bea56e6b"><span class="std std-ref">create_nux</span></a> fails to initialize </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t31nux_error_t_model_deploy_failedE">
-<span id="_CPPv3N11nux_error_t31nux_error_t_model_deploy_failedE"></span><span id="_CPPv2N11nux_error_t31nux_error_t_model_deploy_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a29116f70ad490400f07af16b05441492"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_model_deploy_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t31nux_error_t_model_deploy_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When deploying a model to an executor fails. See also <a class="reference internal" href="#nux_8h_1a0a8c9bb5290414fa8c50a4225a41cd68"><span class="std std-ref">nux_create_sync_model</span></a>, <a class="reference internal" href="#nux_8h_1a0842cc2b55b567e39a175b287690b833"><span class="std std-ref">nux_create_task_model</span></a> for more details. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t34nux_error_t_model_execution_failedE">
-<span id="_CPPv3N11nux_error_t34nux_error_t_model_execution_failedE"></span><span id="_CPPv2N11nux_error_t34nux_error_t_model_execution_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03ac6bd66738165c430a8f4651d1f399534"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_model_execution_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t34nux_error_t_model_execution_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When running an inference task fails. See also <a class="reference internal" href="#nux_8h_1aeb9dee222b8b07f4ae10e6e32b99301f"><span class="std std-ref">model_run</span></a>, <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a> for more details. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t31nux_error_t_invalid_input_indexE">
-<span id="_CPPv3N11nux_error_t31nux_error_t_invalid_input_indexE"></span><span id="_CPPv2N11nux_error_t31nux_error_t_invalid_input_indexE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03ad4ef5746aff7a8084e31f55d96124756"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_invalid_input_index</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t31nux_error_t_invalid_input_indexE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When the given index of an input tensor is invalid. See also <a class="reference internal" href="#nux_8h_1a80b727e0c054b2db830808b882f68305"><span class="std std-ref">model_input_tensor</span></a> for more details. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t32nux_error_t_invalid_output_indexE">
-<span id="_CPPv3N11nux_error_t32nux_error_t_invalid_output_indexE"></span><span id="_CPPv2N11nux_error_t32nux_error_t_invalid_output_indexE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a3c56a6ebe0ce3c87f20317f37e8a58d1"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_invalid_output_index</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t32nux_error_t_invalid_output_indexE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When the given index of an output tensor is invalid. See also <a class="reference internal" href="#nux_8h_1af8a884f8271dddc703f18103a56157ba"><span class="std std-ref">model_output_tensor</span></a> for more details. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t26nux_error_t_invalid_bufferE">
-<span id="_CPPv3N11nux_error_t26nux_error_t_invalid_bufferE"></span><span id="_CPPv2N11nux_error_t26nux_error_t_invalid_bufferE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03acd4211b3688454861ac4982454dc3350"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_invalid_buffer</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t26nux_error_t_invalid_bufferE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When a data buffer is invalid. See <a class="reference internal" href="#nux_8h_1a3139df500cc7640a1516cafae8f3818d"><span class="std std-ref">tensor_set_buffer</span></a> for more details. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t26nux_error_t_invalid_inputsE">
-<span id="_CPPv3N11nux_error_t26nux_error_t_invalid_inputsE"></span><span id="_CPPv2N11nux_error_t26nux_error_t_invalid_inputsE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a47d1dc88180bfb3db50fa2a0ad6cc5de"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_invalid_inputs</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t26nux_error_t_invalid_inputsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When the input tensors are invalid </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t27nux_error_t_invalid_outputsE">
-<span id="_CPPv3N11nux_error_t27nux_error_t_invalid_outputsE"></span><span id="_CPPv2N11nux_error_t27nux_error_t_invalid_outputsE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a21ca1301b3f25e4c706ae8bdd2260681"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_invalid_outputs</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t27nux_error_t_invalid_outputsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When the output tensors are invalid </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t27nux_error_t_get_task_failedE">
-<span id="_CPPv3N11nux_error_t27nux_error_t_get_task_failedE"></span><span id="_CPPv2N11nux_error_t27nux_error_t_get_task_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a86d8ecfc91eb52f6dcb05b674fc18f8e"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_get_task_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t27nux_error_t_get_task_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When <a class="reference internal" href="#nux_8h_1a2a325d501f34c8d3047b17a5acd8f54c"><span class="std std-ref">task_model_get_task</span></a> or <a class="reference internal" href="#nux_8h_1a7c462db4b3b7d698d08585e84f39dce7"><span class="std std-ref">task_model_try_get_task</span></a> fails to return an available task slot. This error code can have different meanings in both functions. Please see <a class="reference internal" href="#nux_8h_1a2a325d501f34c8d3047b17a5acd8f54c"><span class="std std-ref">task_model_get_task</span></a> and <a class="reference internal" href="#nux_8h_1a7c462db4b3b7d698d08585e84f39dce7"><span class="std std-ref">task_model_try_get_task</span></a> for more details. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t31nux_error_t_dump_profile_failedE">
-<span id="_CPPv3N11nux_error_t31nux_error_t_dump_profile_failedE"></span><span id="_CPPv2N11nux_error_t31nux_error_t_dump_profile_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a4bde5d51d7f7f1d68d84bfc3f79b5168"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_dump_profile_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t31nux_error_t_dump_profile_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>reserved </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t30nux_error_t_queue_wait_timeoutE">
-<span id="_CPPv3N11nux_error_t30nux_error_t_queue_wait_timeoutE"></span><span id="_CPPv2N11nux_error_t30nux_error_t_queue_wait_timeoutE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a654f467bd6d8eae2cbf4830491ee5b36"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_queue_wait_timeout</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t30nux_error_t_queue_wait_timeoutE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When waiting for completion queue is timed out </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t25nux_error_t_queue_no_dataE">
-<span id="_CPPv3N11nux_error_t25nux_error_t_queue_no_dataE"></span><span id="_CPPv2N11nux_error_t25nux_error_t_queue_no_dataE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a14535aa4d38445a1bbcc92f5e6115d2a"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_queue_no_data</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t25nux_error_t_queue_no_dataE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When there’s no data in completion queue </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t30nux_error_t_incompatible_modelE">
-<span id="_CPPv3N11nux_error_t30nux_error_t_incompatible_modelE"></span><span id="_CPPv2N11nux_error_t30nux_error_t_incompatible_modelE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9822b7ab8a5770ab237a29211180f7f8"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_incompatible_model</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t30nux_error_t_incompatible_modelE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When loading a model image fails </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t30nux_error_t_compilation_failedE">
-<span id="_CPPv3N11nux_error_t30nux_error_t_compilation_failedE"></span><span id="_CPPv2N11nux_error_t30nux_error_t_compilation_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9f65448b07b3b88d40d94c60b1ad29b5"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_compilation_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t30nux_error_t_compilation_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When the compiler fails to transform a given model image to a binary for NPU </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t26nux_error_t_internal_errorE">
-<span id="_CPPv3N11nux_error_t26nux_error_t_internal_errorE"></span><span id="_CPPv2N11nux_error_t26nux_error_t_internal_errorE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03aff4cadf47af985723a53d8fe5f919116"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_internal_error</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t26nux_error_t_internal_errorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Internal error </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t24nux_error_t_invalid_yamlE">
-<span id="_CPPv3N11nux_error_t24nux_error_t_invalid_yamlE"></span><span id="_CPPv2N11nux_error_t24nux_error_t_invalid_yamlE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a3302110dad3c6b57d35cb866540ee3d9"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_invalid_yaml</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t24nux_error_t_invalid_yamlE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Invalid yaml syntax </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t41nux_error_t_incompatible_api_client_errorE">
-<span id="_CPPv3N11nux_error_t41nux_error_t_incompatible_api_client_errorE"></span><span id="_CPPv2N11nux_error_t41nux_error_t_incompatible_api_client_errorE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03ac3ab8fc8951b8e4c786ea31578c37142"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_incompatible_api_client_error</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t41nux_error_t_incompatible_api_client_errorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>incompatible api client error </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t34nux_error_t_api_client_init_failedE">
-<span id="_CPPv3N11nux_error_t34nux_error_t_api_client_init_failedE"></span><span id="_CPPv2N11nux_error_t34nux_error_t_api_client_init_failedE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03aa55655f1ae20a4025cc2e3b0fc08d548"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_api_client_init_failed</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t34nux_error_t_api_client_init_failedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>when api client fails to initialize </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t22nux_error_t_no_api_keyE">
-<span id="_CPPv3N11nux_error_t22nux_error_t_no_api_keyE"></span><span id="_CPPv2N11nux_error_t22nux_error_t_no_api_keyE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a5046069a83eed49b221d31082ebcf22b"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_no_api_key</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t22nux_error_t_no_api_keyE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>No API Key </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt id="_CPPv4N11nux_error_t34nux_error_t_null_pointer_exceptionE">
-<span id="_CPPv3N11nux_error_t34nux_error_t_null_pointer_exceptionE"></span><span id="_CPPv2N11nux_error_t34nux_error_t_null_pointer_exceptionE"></span><span class="target" id="nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a7ccdeba708b5a2946d3d1f0a621f30f4"></span><em class="property"><span class="pre">enumerator</span> </em><code class="sig-name descname"><span class="pre">nux_error_t_null_pointer_exception</span></code><a class="headerlink" href="#_CPPv4N11nux_error_t34nux_error_t_null_pointer_exceptionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Null pointer exception </p>
+<div class="section" id="module-config">
+<span id="config"></span><h1>Config<a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h1>
+<p>FuriosaSDK Config</p>
+<dl class="py class">
+<dt id="config.ConfigLoader">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">config.</span></code><code class="sig-name descname"><span class="pre">ConfigLoader</span></code><a class="headerlink" href="#config.ConfigLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>ClassLoader loads the local configuration of FuriosaAI SDK.</p>
+<dl class="py method">
+<dt id="config.ConfigLoader.apply">
+<code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">furiosa.openapi.configuration.Configuration</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#config.ConfigLoader.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the loaded configuration to OpenAPI Configuration
+:param client_configuration: OpenAPI client configuration
+:return:</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
-<dl class="cpp function">
-<dt id="_CPPv47versionv">
-<span id="_CPPv37versionv"></span><span id="_CPPv27versionv"></span><span id="version__void"></span><span class="target" id="nux_8h_1aeb72e12ddb9ce47cdafb246b3cfbdd20"></span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">version</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47versionv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return a version of Nux native library. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv414git_short_hashv">
-<span id="_CPPv314git_short_hashv"></span><span id="_CPPv214git_short_hashv"></span><span id="git_short_hash__void"></span><span class="target" id="nux_8h_1ab1336033b102c9837ca990273ec6456d"></span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">git_short_hash</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414git_short_hashv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return a short Git hash of Nux native library. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv415build_timestampv">
-<span id="_CPPv315build_timestampv"></span><span id="_CPPv215build_timestampv"></span><span id="build_timestamp__void"></span><span class="target" id="nux_8h_1a8475134ef3cbbf41d0a2021edcbfa24b"></span><em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">build_timestamp</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415build_timestampv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return a build timestamp of Nux native library. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv414enable_loggingv">
-<span id="_CPPv314enable_loggingv"></span><span id="_CPPv214enable_loggingv"></span><span id="enable_logging__void"></span><span class="target" id="nux_8h_1a95c9321d77ff43a8873d1d86eeb5d3fa"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">enable_logging</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414enable_loggingv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Enable a logger. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv422enable_furiosa_loggingv">
-<span id="_CPPv322enable_furiosa_loggingv"></span><span id="_CPPv222enable_furiosa_loggingv"></span><span id="enable_furiosa_logging__void"></span><span class="target" id="nux_8h_1a861fc462f4f280975bb47edb7565a2c6"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">enable_furiosa_logging</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422enable_furiosa_loggingv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Enable a furiosa logger. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv410create_nuxP12nux_handle_t">
-<span id="_CPPv310create_nuxP12nux_handle_t"></span><span id="_CPPv210create_nuxP12nux_handle_t"></span><span id="create_nux__nux_handle_tP"></span><span class="target" id="nux_8h_1ae68b58f43d3a93f6edf9d0c0bea56e6b"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">create_nux</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_handle_t" title="nux_handle_t"><span class="pre">nux_handle_t</span></a> <span class="pre">*</span><em><span class="pre">nux</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410create_nuxP12nux_handle_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Creates a new nux handle. </p>
+<dl class="py function">
+<dt id="config.load_furiosa_config">
+<code class="sig-prename descclassname"><span class="pre">config.</span></code><code class="sig-name descname"><span class="pre">load_furiosa_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#config.load_furiosa_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the local configuration of FuriosaAI SDK and set the configs
+to the default OpenAPI configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>[out] nux</strong> – Mutable pointer to receive a created Nux handle </p>
+<dd class="field-odd"><p><strong>client_configuration</strong> – OpenAPI client configuration</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9ed6c5025d2d89b340cd46185d394b3a"><span class="std std-ref">nux_error_t_success</span></a> if successful, or it will return <a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03afe4023c8cd3c553d0ac0787a403a18ca"><span class="std std-ref">nux_error_t_nux_creation_failed</span></a>. </p>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt id="_CPPv411destroy_nux12nux_handle_t">
-<span id="_CPPv311destroy_nux12nux_handle_t"></span><span id="_CPPv211destroy_nux12nux_handle_t"></span><span id="destroy_nux__nux_handle_t"></span><span class="target" id="nux_8h_1af85121c378e53e7c270015a79c0af782"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy_nux</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_handle_t" title="nux_handle_t"><span class="pre">nux_handle_t</span></a> <em><span class="pre">nux</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411destroy_nux12nux_handle_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy the Nux handle and release its resources. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>nux</strong> – Nux handle to be destroyed. It must not be NULL. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv421nux_create_sync_model12nux_handle_tPK7uint8_t16nux_buffer_len_tP16nux_sync_model_t">
-<span id="_CPPv321nux_create_sync_model12nux_handle_tPK7uint8_t16nux_buffer_len_tP16nux_sync_model_t"></span><span id="_CPPv221nux_create_sync_model12nux_handle_tPK7uint8_t16nux_buffer_len_tP16nux_sync_model_t"></span><span id="nux_create_sync_model__nux_handle_t.uint8_tCP.nux_buffer_len_t.nux_sync_model_tP"></span><span class="target" id="nux_8h_1a0a8c9bb5290414fa8c50a4225a41cd68"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_create_sync_model</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_handle_t" title="nux_handle_t"><span class="pre">nux_handle_t</span></a> <em><span class="pre">nux</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">uint8_t</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">len</span></em>, <a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <span class="pre">*</span><em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_create_sync_model12nux_handle_tPK7uint8_t16nux_buffer_len_tP16nux_sync_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create an instance of a synchronous model. </p>
-<p>It creates a synchronous model to execute a compiled ENF binary. The synchronous model provides APIs to run a single inference task with one input batch at a time.</p>
+<dl class="py function">
+<dt id="config.set_apikey">
+<code class="sig-prename descclassname"><span class="pre">config.</span></code><code class="sig-name descname"><span class="pre">set_apikey</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">access_key_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secret_access_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.set_apikey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply API keys to OpenAPI client configuration</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>nux</strong> – Nux handle </p></li>
-<li><p><strong>buffer</strong> – Byte buffer containing ENF binary </p></li>
-<li><p><strong>len</strong> – Byte length of <code class="docutils literal notranslate"><span class="pre">buffer</span></code> </p></li>
-<li><p><strong>[out] model</strong> – Mutable pointer to receive the handle of a created sync model </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418destroy_sync_model16nux_sync_model_t">
-<span id="_CPPv318destroy_sync_model16nux_sync_model_t"></span><span id="_CPPv218destroy_sync_model16nux_sync_model_t"></span><span id="destroy_sync_model__nux_sync_model_t"></span><span class="target" id="nux_8h_1a0f6a635eb4e6076213dceb64df4d03bc"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy_sync_model</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418destroy_sync_model16nux_sync_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy the sync model and release its resources. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>model</strong> – Sync model to be destroyed, and it must not be NULL. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418model_count_inputs16nux_sync_model_t">
-<span id="_CPPv318model_count_inputs16nux_sync_model_t"></span><span id="_CPPv218model_count_inputs16nux_sync_model_t"></span><span id="model_count_inputs__nux_sync_model_t"></span><span class="target" id="nux_8h_1ac1bf7db36e6dd35f73a41f4bec1be5d9"></span><span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">model_count_inputs</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418model_count_inputs16nux_sync_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the number of input tensors of a given sync model. </p>
-<p>A model can have more than one input tensor. This function returns how many input tensors this model has.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>model</strong> – Sync model </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Output tensors of this model </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv419model_count_outputs16nux_sync_model_t">
-<span id="_CPPv319model_count_outputs16nux_sync_model_t"></span><span id="_CPPv219model_count_outputs16nux_sync_model_t"></span><span id="model_count_outputs__nux_sync_model_t"></span><span class="target" id="nux_8h_1ab007ff381c0e0dd9e72da5147af733ff"></span><span class="pre">uint32_t</span> <code class="sig-name descname"><span class="pre">model_count_outputs</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419model_count_outputs16nux_sync_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the number of output tensors of a given sync model. </p>
-<p>A model can have more than one output tensor. This function returns how many output tensors this model has.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>model</strong> – Sync model </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Output tensors of this model </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418model_input_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t">
-<span id="_CPPv318model_input_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t"></span><span id="_CPPv218model_input_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t"></span><span id="model_input_tensor__nux_sync_model_t.uint32_t.nux_tensor_tP"></span><span class="target" id="nux_8h_1a80b727e0c054b2db830808b882f68305"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">model_input_tensor</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <em><span class="pre">model</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">index</span></em>, <a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418model_input_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the handle of a specified input tensor from a given sync model. </p>
-<p><dl class="simple">
-<dt><strong>Remark</strong></dt><dd><p>An input tensor handle will be valid until <a class="reference internal" href="#nux_8h_1a0f6a635eb4e6076213dceb64df4d03bc"><span class="std std-ref">destroy_sync_model</span></a> with this <code class="docutils literal notranslate"><span class="pre">model</span></code> is called.</p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model</strong> – Sync model </p></li>
-<li><p><strong>index</strong> – Input tensor index </p></li>
-<li><p><strong>[out] tensor</strong> – Mutable pointer to receive the handle of a specified input tensor </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv419model_output_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t">
-<span id="_CPPv319model_output_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t"></span><span id="_CPPv219model_output_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t"></span><span id="model_output_tensor__nux_sync_model_t.uint32_t.nux_tensor_tP"></span><span class="target" id="nux_8h_1af8a884f8271dddc703f18103a56157ba"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">model_output_tensor</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <em><span class="pre">model</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">index</span></em>, <a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <span class="pre">*</span><em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419model_output_tensor16nux_sync_model_t8uint32_tP12nux_tensor_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the handle of a specified output tensor from a given sync model. </p>
-<p><dl class="simple">
-<dt><strong>Remark</strong></dt><dd><p>Output tensor handle will be valid until <a class="reference internal" href="#nux_8h_1a0f6a635eb4e6076213dceb64df4d03bc"><span class="std std-ref">destroy_sync_model</span></a> with this <code class="docutils literal notranslate"><span class="pre">model</span></code> is called.</p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model</strong> – Sync model </p></li>
-<li><p><strong>index</strong> – Output tensor index </p></li>
-<li><p><strong>[out] tensor</strong> – Mutable pointer to receive a specified output tensor handle </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv49model_run16nux_sync_model_t">
-<span id="_CPPv39model_run16nux_sync_model_t"></span><span id="_CPPv29model_run16nux_sync_model_t"></span><span id="model_run__nux_sync_model_t"></span><span class="target" id="nux_8h_1aeb9dee222b8b07f4ae10e6e32b99301f"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">model_run</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_sync_model_t" title="nux_sync_model_t"><span class="pre">nux_sync_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49model_run16nux_sync_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Run a single inference task. </p>
-<p>Before calling this function, you must fill input tensors with proper data. Please refer to <a class="reference internal" href="#nux_8h_1a80b727e0c054b2db830808b882f68305"><span class="std std-ref">model_input_tensor</span></a> and <a class="reference internal" href="#nux_8h_1a3139df500cc7640a1516cafae8f3818d"><span class="std std-ref">tensor_set_buffer</span></a> to learn how to fill input tensors with data. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv417tensor_get_buffer12nux_tensor_tP12nux_buffer_tP16nux_buffer_len_t">
-<span id="_CPPv317tensor_get_buffer12nux_tensor_tP12nux_buffer_tP16nux_buffer_len_t"></span><span id="_CPPv217tensor_get_buffer12nux_tensor_tP12nux_buffer_tP16nux_buffer_len_t"></span><span id="tensor_get_buffer__nux_tensor_t.nux_buffer_tP.nux_buffer_len_tP"></span><span class="target" id="nux_8h_1ac300486348c761b9bfa20cf614d06dca"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">tensor_get_buffer</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <em><span class="pre">tensor</span></em>, <a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <span class="pre">*</span><em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417tensor_get_buffer12nux_tensor_tP12nux_buffer_tP16nux_buffer_len_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get a pointer to the data buffer of a given tensor. </p>
-<p>Once <a class="reference internal" href="#nux_8h_1aeb9dee222b8b07f4ae10e6e32b99301f"><span class="std std-ref">model_run</span></a> is called, the inference result will be written into output tensors. This function returns a pointer to the data buffer of a specified output tensor.</p>
-<p><dl class="simple">
-<dt><strong>Remark</strong></dt><dd><p>the buffers of output tensors are valid until <a class="reference internal" href="#nux_8h_1a0f6a635eb4e6076213dceb64df4d03bc"><span class="std std-ref">destroy_sync_model</span></a> is called.</p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – Tensor from which you want to get a pointer of the data buffer </p></li>
-<li><p><strong>[out] buffer</strong> – Mutable pointer to receive the pointer to the data buffer </p></li>
-<li><p><strong>[out] len</strong> – Byte length of <code class="docutils literal notranslate"><span class="pre">buffer</span></code> </p></li>
+<li><p><strong>client_configuration</strong> – OpenAPI client configuration</p></li>
+<li><p><strong>access_key_id</strong> – Access key id</p></li>
+<li><p><strong>secret_access_key</strong> – Secret access key</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>nux_error_t_success if successful </p>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418tensor_fill_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_t">
-<span id="_CPPv318tensor_fill_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_t"></span><span id="_CPPv218tensor_fill_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_t"></span><span id="tensor_fill_buffer__nux_tensor_t.nux_buffer_t.nux_buffer_len_t"></span><span class="target" id="nux_8h_1acb618caa33b7852140a4c7bf5cea3c93"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">tensor_fill_buffer</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <em><span class="pre">tensor</span></em>, <a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <em><span class="pre">buffer</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">len</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418tensor_fill_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Copy data into the data buffer of a specified input tensor. </p>
-<p>To execute <a class="reference internal" href="#nux_8h_1aeb9dee222b8b07f4ae10e6e32b99301f"><span class="std std-ref">model_run</span></a>, you first need to fill input tensors with data. <a class="reference internal" href="#nux_8h_1acb618caa33b7852140a4c7bf5cea3c93"><span class="std std-ref">tensor_fill_buffer</span></a> copies the data into the data buffer of a specified input tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – Tensor handle into which you want to copy input data </p></li>
-<li><p><strong>buffer</strong> – Pointer to the data buffer </p></li>
-<li><p><strong>len</strong> – Byte length of <code class="docutils literal notranslate"><span class="pre">buffer</span></code> </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>nux_error_t_success if successful, or nux_error_t_invalid_buffer if <code class="docutils literal notranslate"><span class="pre">buffer</span></code> is invalid. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv417tensor_set_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE">
-<span id="_CPPv317tensor_set_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE"></span><span id="_CPPv217tensor_set_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE"></span><span class="target" id="nux_8h_1a3139df500cc7640a1516cafae8f3818d"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">tensor_set_buffer</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <em><span class="pre">tensor</span></em>, <a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <em><span class="pre">buffer</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">len</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">free</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint8_t</span><span class="pre">*</span>, <span class="pre">uintptr_t</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417tensor_set_buffer12nux_tensor_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Specify a pointer to a data buffer to a specified input tensor. </p>
-<p>This function is almost same to <a class="reference internal" href="#nux_8h_1acb618caa33b7852140a4c7bf5cea3c93"><span class="std std-ref">tensor_fill_buffer</span></a>. However, <code class="docutils literal notranslate"><span class="pre">tensor</span></code> takes the ownership of the buffer with <code class="docutils literal notranslate"><span class="pre">free</span></code> function to deallocate the buffer. Ensure that nothing else uses the pointer after calling this function.</p>
-<p>if <code class="docutils literal notranslate"><span class="pre">free</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code>, <code class="docutils literal notranslate"><span class="pre">tensor</span></code> will not deallocate the buffer. It can be useful when you want to reuse the buffer or buffer is on a stack area of a function. Please ensure that the buffer must be deallocated manually by users in order to prevent the memory leak.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tensor</strong> – Tensor handle into which you want to copy input data </p></li>
-<li><p><strong>buffer</strong> – Pointer to the data buffer </p></li>
-<li><p><strong>len</strong> – Byte length of <code class="docutils literal notranslate"><span class="pre">buffer</span></code> </p></li>
-<li><p><strong>free</strong> – a function pointer to deallocate a buffer. If <code class="docutils literal notranslate"><span class="pre">free</span></code> is <code class="docutils literal notranslate"><span class="pre">null</span></code>, <code class="docutils literal notranslate"><span class="pre">tensor</span></code> will not deallocate the data. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>nux_error_t_success if successful, or nux_error_t_invalid_buffer if <code class="docutils literal notranslate"><span class="pre">buffer</span></code> is invalid. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv421nux_create_task_model12nux_handle_tPK7uint8_t16nux_buffer_len_t8uint32_t21nux_output_callback_t20nux_error_callback_t21nux_finish_callback_tP16nux_task_model_t">
-<span id="_CPPv321nux_create_task_model12nux_handle_tPK7uint8_t16nux_buffer_len_t8uint32_t21nux_output_callback_t20nux_error_callback_t21nux_finish_callback_tP16nux_task_model_t"></span><span id="_CPPv221nux_create_task_model12nux_handle_tPK7uint8_t16nux_buffer_len_t8uint32_t21nux_output_callback_t20nux_error_callback_t21nux_finish_callback_tP16nux_task_model_t"></span><span id="nux_create_task_model__nux_handle_t.uint8_tCP.nux_buffer_len_t.uint32_t.nux_output_callback_t.nux_error_callback_t.nux_finish_callback_t.nux_task_model_tP"></span><span class="target" id="nux_8h_1a0842cc2b55b567e39a175b287690b833"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_create_task_model</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_handle_t" title="nux_handle_t"><span class="pre">nux_handle_t</span></a> <em><span class="pre">nux</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">uint8_t</span> <span class="pre">*</span><em><span class="pre">buffer</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">len</span></em>, <span class="pre">uint32_t</span> <em><span class="pre">max_batch</span></em>, <a class="reference internal" href="#_CPPv421nux_output_callback_t" title="nux_output_callback_t"><span class="pre">nux_output_callback_t</span></a> <em><span class="pre">output_callback</span></em>, <a class="reference internal" href="#_CPPv420nux_error_callback_t" title="nux_error_callback_t"><span class="pre">nux_error_callback_t</span></a> <em><span class="pre">error_callback</span></em>, <a class="reference internal" href="#_CPPv421nux_finish_callback_t" title="nux_finish_callback_t"><span class="pre">nux_finish_callback_t</span></a> <em><span class="pre">finish_callback</span></em>, <a class="reference internal" href="#_CPPv416nux_task_model_t" title="nux_task_model_t"><span class="pre">nux_task_model_t</span></a> <span class="pre">*</span><em><span class="pre">task_model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_create_task_model12nux_handle_tPK7uint8_t16nux_buffer_len_t8uint32_t21nux_output_callback_t20nux_error_callback_t21nux_finish_callback_tP16nux_task_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create an instance of a task model. </p>
-<p>It allows users to run multiple inference tasks asynchronously and simultaneously. When each task is completed or failed, corresponding callback functions will be called with <a class="reference internal" href="#nux_8h_1a85c8a2e016cba474b1d72a43be2658b8"><span class="std std-ref">nux_request_id_t</span></a>, an identifier of a task request. See also <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a> for more details.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>nux</strong> – Nux handle </p></li>
-<li><p><strong>buffer</strong> – Byte buffer containing ENF binary </p></li>
-<li><p><strong>len</strong> – Byte length of <code class="docutils literal notranslate"><span class="pre">buffer</span></code> </p></li>
-<li><p><strong>max_batch</strong> – Number of concurrent running tasks It can be limited according to internal configurations and HW capacity. </p></li>
-<li><p><strong>output_callback</strong> – Callback function invoked when a task is completed. It will be called per output tensor. Please see <a class="reference internal" href="#nux_8h_1a4bf21e12388c35aa93937f3ef11b2d58"><span class="std std-ref">nux_output_callback_t</span></a> for more details. </p></li>
-<li><p><strong>error_callback</strong> – Callback function invoked when a task is failed. </p></li>
-<li><p><strong>finish_callback</strong> – Callback function which will be called finally after the output_callback is called after all output tensors. </p></li>
-<li><p><strong>task_model</strong> – Mutable pointer to receive the handle of a created task model </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418destroy_task_model16nux_task_model_t">
-<span id="_CPPv318destroy_task_model16nux_task_model_t"></span><span id="_CPPv218destroy_task_model16nux_task_model_t"></span><span id="destroy_task_model__nux_task_model_t"></span><span class="target" id="nux_8h_1a7475a6df5e1c04159322b71d55979799"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy_task_model</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_task_model_t" title="nux_task_model_t"><span class="pre">nux_task_model_t</span></a> <em><span class="pre">task_model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418destroy_task_model16nux_task_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy the task model and release its resources. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>task_model</strong> – Task model to be destroyed </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv427task_model_is_all_task_done16nux_task_model_t">
-<span id="_CPPv327task_model_is_all_task_done16nux_task_model_t"></span><span id="_CPPv227task_model_is_all_task_done16nux_task_model_t"></span><span id="task_model_is_all_task_done__nux_task_model_t"></span><span class="target" id="nux_8h_1a4c97ec2ec3df18d11981f050f1c66890"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">task_model_is_all_task_done</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_task_model_t" title="nux_task_model_t"><span class="pre">nux_task_model_t</span></a> <em><span class="pre">task_model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427task_model_is_all_task_done16nux_task_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if there’s no running tasks, or <code class="docutils literal notranslate"><span class="pre">false</span></code> if any task is still running. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>task_model</strong> – Task handle </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv419task_model_get_task16nux_task_model_tP10nux_task_t">
-<span id="_CPPv319task_model_get_task16nux_task_model_tP10nux_task_t"></span><span id="_CPPv219task_model_get_task16nux_task_model_tP10nux_task_t"></span><span id="task_model_get_task__nux_task_model_t.nux_task_tP"></span><span class="target" id="nux_8h_1a2a325d501f34c8d3047b17a5acd8f54c"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">task_model_get_task</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_task_model_t" title="nux_task_model_t"><span class="pre">nux_task_model_t</span></a> <em><span class="pre">task_model</span></em>, <a class="reference internal" href="#_CPPv410nux_task_t" title="nux_task_t"><span class="pre">nux_task_t</span></a> <span class="pre">*</span><em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419task_model_get_task16nux_task_model_tP10nux_task_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get a task handle from a specified task model. </p>
-<p>When there’s no available task in a given task model, it will block until new task is available.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>task_model</strong> – Handle of a task model </p></li>
-<li><p><strong>[out] task</strong> – Mutable pointer to receive the handle of a created task </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv423task_model_try_get_task16nux_task_model_tP10nux_task_t">
-<span id="_CPPv323task_model_try_get_task16nux_task_model_tP10nux_task_t"></span><span id="_CPPv223task_model_try_get_task16nux_task_model_tP10nux_task_t"></span><span id="task_model_try_get_task__nux_task_model_t.nux_task_tP"></span><span class="target" id="nux_8h_1a7c462db4b3b7d698d08585e84f39dce7"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">task_model_try_get_task</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv416nux_task_model_t" title="nux_task_model_t"><span class="pre">nux_task_model_t</span></a> <em><span class="pre">task_model</span></em>, <a class="reference internal" href="#_CPPv410nux_task_t" title="nux_task_t"><span class="pre">nux_task_t</span></a> <span class="pre">*</span><em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423task_model_try_get_task16nux_task_model_tP10nux_task_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>(non-blocking) Get a task handle from the specified task model. </p>
-<p>It’s the non-blocking version of <a class="reference internal" href="#nux_8h_1a2a325d501f34c8d3047b17a5acd8f54c"><span class="std std-ref">task_model_get_task</span></a>. This function returns an available task, or it will return immediately <a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a86d8ecfc91eb52f6dcb05b674fc18f8e"><span class="std std-ref">nux_error_t_get_task_failed</span></a> if there’s no available task in a given task model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>task_model</strong> – Handle of a task model </p></li>
-<li><p><strong>[out] task</strong> – Mutable pointer to receive the handle of a created task </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv412destroy_task10nux_task_t">
-<span id="_CPPv312destroy_task10nux_task_t"></span><span id="_CPPv212destroy_task10nux_task_t"></span><span id="destroy_task__nux_task_t"></span><span class="target" id="nux_8h_1a89552859a24b08529bf9e950cd8bb34b"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">destroy_task</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410nux_task_t" title="nux_task_t"><span class="pre">nux_task_t</span></a> <em><span class="pre">task</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412destroy_task10nux_task_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy the task and release its resources. </p>
-<p><dl class="simple">
-<dt><strong>Remark</strong></dt><dd><p>Once you call <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a> with a <code class="docutils literal notranslate"><span class="pre">task</span></code>, the <code class="docutils literal notranslate"><span class="pre">task</span></code> will get destroyed automatically. Please do not call <a class="reference internal" href="#nux_8h_1a89552859a24b08529bf9e950cd8bb34b"><span class="std std-ref">destroy_task</span></a> with the <code class="docutils literal notranslate"><span class="pre">task</span></code> which is already passed to <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a>.</p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>task</strong> – Task to be destroyed </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv412task_execute10nux_task_t16nux_request_id_t">
-<span id="_CPPv312task_execute10nux_task_t16nux_request_id_t"></span><span id="_CPPv212task_execute10nux_task_t16nux_request_id_t"></span><span id="task_execute__nux_task_t.nux_request_id_t"></span><span class="target" id="nux_8h_1af9d6c581a36012b468636777dd4eaca1"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">task_execute</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410nux_task_t" title="nux_task_t"><span class="pre">nux_task_t</span></a> <em><span class="pre">task</span></em>, <a class="reference internal" href="#_CPPv416nux_request_id_t" title="nux_request_id_t"><span class="pre">nux_request_id_t</span></a> <em><span class="pre">request_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412task_execute10nux_task_t16nux_request_id_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Request one asynchronous inference task. </p>
-<p><a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a> submits a request for an inference task identified by <code class="docutils literal notranslate"><span class="pre">task</span></code>. Once a task is completed, <code class="docutils literal notranslate"><span class="pre">output_callback</span></code> function passed to <a class="reference internal" href="#nux_8h_1a0842cc2b55b567e39a175b287690b833"><span class="std std-ref">nux_create_task_model</span></a> will be called with a distinct output index per output tensor. <code class="docutils literal notranslate"><span class="pre">finish_callback</span></code> function will be also called after <code class="docutils literal notranslate"><span class="pre">output_callback</span></code> function is called for all output tensors.</p>
-<p><dl class="simple">
-<dt><strong>Remark</strong></dt><dd><p>Once you call <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a> with a <code class="docutils literal notranslate"><span class="pre">task</span></code>, the <code class="docutils literal notranslate"><span class="pre">task</span></code> will get destroyed automatically. Please do not call <a class="reference internal" href="#nux_8h_1a89552859a24b08529bf9e950cd8bb34b"><span class="std std-ref">destroy_task</span></a> with the <code class="docutils literal notranslate"><span class="pre">task</span></code> which is already passed to <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a>.</p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>task</strong> – Task handle obtained from calling <a class="reference internal" href="#nux_8h_1a2a325d501f34c8d3047b17a5acd8f54c"><span class="std std-ref">task_model_get_task</span></a> or <a class="reference internal" href="#nux_8h_1a7c462db4b3b7d698d08585e84f39dce7"><span class="std std-ref">task_model_try_get_task</span></a>. </p></li>
-<li><p><strong>request_id</strong> – An positive integer to distinguish task requests. The behavior of <a class="reference internal" href="#nux_8h_1af9d6c581a36012b468636777dd4eaca1"><span class="std std-ref">task_execute</span></a> doesn’t rely on a <code class="docutils literal notranslate"><span class="pre">request_id</span></code> value at all. <code class="docutils literal notranslate"><span class="pre">request_id</span></code> will be just passed to callback functions. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9ed6c5025d2d89b340cd46185d394b3a"><span class="std std-ref">nux_error_t_success</span></a> if successful. or <a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03ac6bd66738165c430a8f4651d1f399534"><span class="std std-ref">nux_error_t_model_execution_failed</span></a> if failed. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv410task_input10nux_task_t17nux_input_index_t">
-<span id="_CPPv310task_input10nux_task_t17nux_input_index_t"></span><span id="_CPPv210task_input10nux_task_t17nux_input_index_t"></span><span id="task_input__nux_task_t.nux_input_index_t"></span><span class="target" id="nux_8h_1ab33af2615cc40ef5c1f808e92844989a"></span><a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <code class="sig-name descname"><span class="pre">task_input</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410nux_task_t" title="nux_task_t"><span class="pre">nux_task_t</span></a> <em><span class="pre">task</span></em>, <a class="reference internal" href="#_CPPv417nux_input_index_t" title="nux_input_index_t"><span class="pre">nux_input_index_t</span></a> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410task_input10nux_task_t17nux_input_index_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return a mutable pointer to the buffer of the specified input tensor. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>task</strong> – Task handle </p></li>
-<li><p><strong>index</strong> – Index of the input tensor </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A mutable pointer to the data buffer of the given input tensor </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv415task_input_size10nux_task_t17nux_input_index_t">
-<span id="_CPPv315task_input_size10nux_task_t17nux_input_index_t"></span><span id="_CPPv215task_input_size10nux_task_t17nux_input_index_t"></span><span id="task_input_size__nux_task_t.nux_input_index_t"></span><span class="target" id="nux_8h_1a5e21f23e53910367aedd397a9e48b8ec"></span><a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <code class="sig-name descname"><span class="pre">task_input_size</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410nux_task_t" title="nux_task_t"><span class="pre">nux_task_t</span></a> <em><span class="pre">task</span></em>, <a class="reference internal" href="#_CPPv417nux_input_index_t" title="nux_input_index_t"><span class="pre">nux_input_index_t</span></a> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415task_input_size10nux_task_t17nux_input_index_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the buffer length in bytes of the specified input tensor. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>task</strong> – Task handle </p></li>
-<li><p><strong>index</strong> – Index of the input tensor </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv425nux_session_option_createv">
-<span id="_CPPv325nux_session_option_createv"></span><span id="_CPPv225nux_session_option_createv"></span><span id="nux_session_option_create__void"></span><span class="target" id="nux_8h_1abeefe6895d623679ae543a1dbab84010"></span><a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <code class="sig-name descname"><span class="pre">nux_session_option_create</span></code><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425nux_session_option_createv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a session option. </p>
-<p>It allows to specify more options for a session.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Session option </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv429nux_session_option_set_device20nux_session_option_tPKc">
-<span id="_CPPv329nux_session_option_set_device20nux_session_option_tPKc"></span><span id="_CPPv229nux_session_option_set_device20nux_session_option_tPKc"></span><span id="nux_session_option_set_device__nux_session_option_t.cCP"></span><span class="target" id="nux_8h_1a5db104690c98286ffc4e68ea19938c5f"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_session_option_set_device</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <em><span class="pre">builder</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">devname</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429nux_session_option_set_device20nux_session_option_tPKc" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set a NPU device to the given session option. </p>
-<p>If NPU device is not set, Session will use the default NPU device <code class="docutils literal notranslate"><span class="pre">npu0pe0</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>option</strong> – Session option </p></li>
-<li><p><strong>devname</strong> – A NPU device name (e.g., npu0pe0, npu1pe0) </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv438nux_session_option_set_compiler_config20nux_session_option_tPKc">
-<span id="_CPPv338nux_session_option_set_compiler_config20nux_session_option_tPKc"></span><span id="_CPPv238nux_session_option_set_compiler_config20nux_session_option_tPKc"></span><span id="nux_session_option_set_compiler_config__nux_session_option_t.cCP"></span><span class="target" id="nux_8h_1ad11deaee86bd9a8423a9d095cf565021"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_session_option_set_compiler_config</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <em><span class="pre">option</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">char</span> <span class="pre">*</span><em><span class="pre">yaml</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438nux_session_option_set_compiler_config20nux_session_option_tPKc" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set a compiler config to the given session option. </p>
-<p>If compiler config is not set, Session will use a default compiler config.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>option</strong> – Session option </p></li>
-<li><p><strong>yaml</strong> – A yaml formatted string of compiler option </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9ed6c5025d2d89b340cd46185d394b3a"><span class="std std-ref">nux_error_t_success</span></a> if successful. or <a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a3302110dad3c6b57d35cb866540ee3d9"><span class="std std-ref">nux_error_t_invalid_yaml</span></a> if <code class="docutils literal notranslate"><span class="pre">yaml</span></code> is not a valid yaml document. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv426nux_session_option_destroy20nux_session_option_t">
-<span id="_CPPv326nux_session_option_destroy20nux_session_option_t"></span><span id="_CPPv226nux_session_option_destroy20nux_session_option_t"></span><span id="nux_session_option_destroy__nux_session_option_t"></span><span class="target" id="nux_8h_1a332899f8bd7d6719acf29b22b4c0a73a"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_session_option_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <em><span class="pre">option</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426nux_session_option_destroy20nux_session_option_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy a session option. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418nux_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP13nux_session_t">
-<span id="_CPPv318nux_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP13nux_session_t"></span><span id="_CPPv218nux_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP13nux_session_t"></span><span id="nux_session_create__nux_buffer_t.nux_buffer_len_t.nux_session_option_t.nux_session_tP"></span><span class="target" id="nux_8h_1a97d689454b4f62f8a200760002c3dc7f"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_session_create</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <em><span class="pre">model_binary</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">model_binary_len</span></em>, <a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <em><span class="pre">option</span></em>, <a class="reference internal" href="#_CPPv413nux_session_t" title="nux_session_t"><span class="pre">nux_session_t</span></a> <span class="pre">*</span><em><span class="pre">out_sess</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418nux_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP13nux_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a session. </p>
-<p>Session provides simple and synchronous APIs to run inference tasks from a loaded model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model_binary</strong> – Buffer which contains a model binary </p></li>
-<li><p><strong>model_binary_len</strong> – Length of <code class="docutils literal notranslate"><span class="pre">model_binary</span></code> </p></li>
-<li><p><strong>option</strong> – Session option. If it is null, the default option will be used. <a class="reference internal" href="#nux_8h_1a97d689454b4f62f8a200760002c3dc7f"><span class="std std-ref">nux_session_create</span></a> internally releases the session option pointed to by <code class="docutils literal notranslate"><span class="pre">option</span></code>, so <code class="docutils literal notranslate"><span class="pre">option</span></code> must not be dereferenced or destroyed manually (via <a class="reference internal" href="#nux_8h_1a332899f8bd7d6719acf29b22b4c0a73a"><span class="std std-ref">nux_session_option_destroy</span></a>) after calling <a class="reference internal" href="#nux_8h_1a97d689454b4f62f8a200760002c3dc7f"><span class="std std-ref">nux_session_create</span></a>. </p></li>
-<li><p><strong>[out] sess</strong> – Mutable pointer to receive a created Nux handle </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9ed6c5025d2d89b340cd46185d394b3a"><span class="std std-ref">nux_error_t_success</span></a> if successful. or it will return other error value. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv421nux_session_get_model13nux_session_t">
-<span id="_CPPv321nux_session_get_model13nux_session_t"></span><span id="_CPPv221nux_session_get_model13nux_session_t"></span><span id="nux_session_get_model__nux_session_t"></span><span class="target" id="nux_8h_1a724a23e737b3add5a339be1dc7128309"></span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <code class="sig-name descname"><span class="pre">nux_session_get_model</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413nux_session_t" title="nux_session_t"><span class="pre">nux_session_t</span></a> <em><span class="pre">sess</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_session_get_model13nux_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the pointer of the Model of a given session. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sess</strong> – Handle of session instance. It must not be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Pointer of the Model of a given session </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv415nux_session_run13nux_session_t18nux_tensor_array_t18nux_tensor_array_t">
-<span id="_CPPv315nux_session_run13nux_session_t18nux_tensor_array_t18nux_tensor_array_t"></span><span id="_CPPv215nux_session_run13nux_session_t18nux_tensor_array_t18nux_tensor_array_t"></span><span id="nux_session_run__nux_session_t.nux_tensor_array_t.nux_tensor_array_t"></span><span class="target" id="nux_8h_1a494a7c6cf86f81fd8fd9a7ec0386aa39"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_session_run</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413nux_session_t" title="nux_session_t"><span class="pre">nux_session_t</span></a> <em><span class="pre">sess</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">inputs</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">outputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415nux_session_run13nux_session_t18nux_tensor_array_t18nux_tensor_array_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Run an inference task. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sess</strong> – Handle of Session instance. It must not be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. </p></li>
-<li><p><strong>inputs</strong> – Input tensors </p></li>
-<li><p><strong>outputs</strong> – Output tensors </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a9ed6c5025d2d89b340cd46185d394b3a"><span class="std std-ref">nux_error_t_success</span></a> if successful. or it will return other error value. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv419nux_session_destroy13nux_session_t">
-<span id="_CPPv319nux_session_destroy13nux_session_t"></span><span id="_CPPv219nux_session_destroy13nux_session_t"></span><span id="nux_session_destroy__nux_session_t"></span><span class="target" id="nux_8h_1ae2513c3ef496314bc17b638320fda5e5"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_session_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv413nux_session_t" title="nux_session_t"><span class="pre">nux_session_t</span></a> <em><span class="pre">sess</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419nux_session_destroy13nux_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy a session. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sess</strong> – Handle of Session instance to be destroyed. It must not be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv424nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t">
-<span id="_CPPv324nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t"></span><span id="_CPPv224nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t"></span><span id="nux_async_session_create__nux_buffer_t.nux_buffer_len_t.nux_session_option_t.nux_async_session_tP.nux_completion_queue_tP"></span><span class="target" id="nux_8h_1a6d8b4d876c425963ecbc1812504c1ce9"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_async_session_create</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <em><span class="pre">model_binary</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">model_binary_len</span></em>, <a class="reference internal" href="#_CPPv420nux_session_option_t" title="nux_session_option_t"><span class="pre">nux_session_option_t</span></a> <em><span class="pre">option</span></em>, <a class="reference internal" href="#_CPPv419nux_async_session_t" title="nux_async_session_t"><span class="pre">nux_async_session_t</span></a> <span class="pre">*</span><em><span class="pre">out_sess</span></em>, <a class="reference internal" href="#_CPPv422nux_completion_queue_t" title="nux_completion_queue_t"><span class="pre">nux_completion_queue_t</span></a> <span class="pre">*</span><em><span class="pre">out_queue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424nux_async_session_create12nux_buffer_t16nux_buffer_len_t20nux_session_option_tP19nux_async_session_tP22nux_completion_queue_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create an asynchronous session and a queue to receive the results. </p>
-<p><a class="reference internal" href="#nux_8h_1a2d592d21337f153b24799e8f565a7187"><span class="std std-ref">nux_async_session_t</span></a> allows users to submit inference tasks. #nux_completion_queue_t is an iterator to receive the result in the asynchronous way. See also <a class="reference internal" href="#nux_8h_1a908c99ce9bb71a2802ee07241e372080"><span class="std std-ref">nux_async_session_run</span></a> and <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>model_binary</strong> – Buffer which contains a model binary </p></li>
-<li><p><strong>model_binary_len</strong> – Length of <code class="docutils literal notranslate"><span class="pre">model_binary</span></code> </p></li>
-<li><p><strong>option</strong> – Session option. If it is null, the default option will be used. nux_session_create internally releases the session option pointed to by option, so option must not be dereferenced or destroyed manually (via nux_session_option_destroy) after calling nux_async_session_create. </p></li>
-<li><p><strong>[out] out_sess</strong> – Mutable pointer to an instance of async session </p></li>
-<li><p><strong>[out] out_queue</strong> – Mutable pointer to an instance of async completion queue </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv421nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t">
-<span id="_CPPv321nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t"></span><span id="_CPPv221nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t"></span><span id="nux_async_session_run__nux_async_session_t.nux_context_t.nux_tensor_array_t"></span><span class="target" id="nux_8h_1a908c99ce9bb71a2802ee07241e372080"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <code class="sig-name descname"><span class="pre">nux_async_session_run</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419nux_async_session_t" title="nux_async_session_t"><span class="pre">nux_async_session_t</span></a> <em><span class="pre">sess</span></em>, <a class="reference internal" href="#_CPPv413nux_context_t" title="nux_context_t"><span class="pre">nux_context_t</span></a> <em><span class="pre">context</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">inputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421nux_async_session_run19nux_async_session_t13nux_context_t18nux_tensor_array_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Submit an inference task asynchronously. It returns immediately. </p>
-<p>You can receive the completed inference results through #nux_completion_queue_t. please refer to <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a> to know how to receive the completed results.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sess</strong> – Handle of asynchronous session </p></li>
-<li><p><strong>&lt;tt&gt;context&lt;/tt&gt;</strong> – is a void pointer, so you can pass any data to context. Generally, <code class="docutils literal notranslate"><span class="pre">context</span></code> can be used to identify what’s the completion event. Also, sophisticated data structure can be used to to do more as soon as you receive the completion event. You must make sure the pointer must be valid as long as you want to use a passed context even after you receive the completion event. </p></li>
-<li><p><strong>inputs</strong> – an array of tensors </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv425nux_completion_queue_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t">
-<span id="_CPPv325nux_completion_queue_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t"></span><span id="_CPPv225nux_completion_queue_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t"></span><span id="nux_completion_queue_next__nux_completion_queue_t.nux_context_tP.nux_tensor_array_tP.nux_error_tP"></span><span class="target" id="nux_8h_1abcb841623cf8238c2317f8dd780e8870"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">nux_completion_queue_next</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422nux_completion_queue_t" title="nux_completion_queue_t"><span class="pre">nux_completion_queue_t</span></a> <em><span class="pre">queue</span></em>, <a class="reference internal" href="#_CPPv413nux_context_t" title="nux_context_t"><span class="pre">nux_context_t</span></a> <span class="pre">*</span><em><span class="pre">context</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <span class="pre">*</span><em><span class="pre">outputs</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <span class="pre">*</span><em><span class="pre">error</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425nux_completion_queue_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Wait until it receives any completion event, which can be success or fail. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv429nux_completion_queue_try_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t">
-<span id="_CPPv329nux_completion_queue_try_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t"></span><span id="_CPPv229nux_completion_queue_try_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t"></span><span id="nux_completion_queue_try_next__nux_completion_queue_t.nux_context_tP.nux_tensor_array_tP.nux_error_tP"></span><span class="target" id="nux_8h_1a98249f0e276a29d6348f05a4befc1051"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">nux_completion_queue_try_next</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422nux_completion_queue_t" title="nux_completion_queue_t"><span class="pre">nux_completion_queue_t</span></a> <em><span class="pre">queue</span></em>, <a class="reference internal" href="#_CPPv413nux_context_t" title="nux_context_t"><span class="pre">nux_context_t</span></a> <span class="pre">*</span><em><span class="pre">context</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <span class="pre">*</span><em><span class="pre">outputs</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <span class="pre">*</span><em><span class="pre">error</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429nux_completion_queue_try_next22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>It’s almost the same as <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a>, but it immediately returns even if there hasn’t been completion event after the last call. It will set <code class="docutils literal notranslate"><span class="pre">error</span></code> to <a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a14535aa4d38445a1bbcc92f5e6115d2a"><span class="std std-ref">nux_error_t_queue_no_data</span></a>. if this function returns without any completion event. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv433nux_completion_queue_next_timeout22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t8uint64_t">
-<span id="_CPPv333nux_completion_queue_next_timeout22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t8uint64_t"></span><span id="_CPPv233nux_completion_queue_next_timeout22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t8uint64_t"></span><span id="nux_completion_queue_next_timeout__nux_completion_queue_t.nux_context_tP.nux_tensor_array_tP.nux_error_tP.uint64_t"></span><span class="target" id="nux_8h_1a295f7c7c1016a88d4de27b4b99aa1b2c"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">nux_completion_queue_next_timeout</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422nux_completion_queue_t" title="nux_completion_queue_t"><span class="pre">nux_completion_queue_t</span></a> <em><span class="pre">queue</span></em>, <a class="reference internal" href="#_CPPv413nux_context_t" title="nux_context_t"><span class="pre">nux_context_t</span></a> <span class="pre">*</span><em><span class="pre">context</span></em>, <a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <span class="pre">*</span><em><span class="pre">outputs</span></em>, <em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv411nux_error_t" title="nux_error_t"><span class="pre">nux_error_t</span></a> <span class="pre">*</span><em><span class="pre">error</span></em>, <span class="pre">uint64_t</span> <em><span class="pre">timeout_millis</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433nux_completion_queue_next_timeout22nux_completion_queue_tP13nux_context_tP18nux_tensor_array_tP11nux_error_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>It’s almost the same as <a class="reference internal" href="#nux_8h_1abcb841623cf8238c2317f8dd780e8870"><span class="std std-ref">nux_completion_queue_next</span></a>, but it will wait for a given timeout in milli seconds even if there’s no completion event. After the timeout is expired, it will set <a class="reference internal" href="#nux_8h_1a5f9e5f9dc6c0a6652d730ef3fc5fff03a654f467bd6d8eae2cbf4830491ee5b36"><span class="std std-ref">nux_error_t_queue_wait_timeout</span></a> to <code class="docutils literal notranslate"><span class="pre">error</span></code>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv427nux_async_session_get_model19nux_async_session_t">
-<span id="_CPPv327nux_async_session_get_model19nux_async_session_t"></span><span id="_CPPv227nux_async_session_get_model19nux_async_session_t"></span><span id="nux_async_session_get_model__nux_async_session_t"></span><span class="target" id="nux_8h_1ab49cc0347c92073c07b89e48861a6f72"></span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <code class="sig-name descname"><span class="pre">nux_async_session_get_model</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419nux_async_session_t" title="nux_async_session_t"><span class="pre">nux_async_session_t</span></a> <em><span class="pre">sess</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427nux_async_session_get_model19nux_async_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the pointer of the Model of a given asynchronous session. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sess</strong> – Handle of asynchronous session instance. It must not be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Pointer of the Model of a given asynchronous session </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv425nux_async_session_destroy19nux_async_session_t">
-<span id="_CPPv325nux_async_session_destroy19nux_async_session_t"></span><span id="_CPPv225nux_async_session_destroy19nux_async_session_t"></span><span id="nux_async_session_destroy__nux_async_session_t"></span><span class="target" id="nux_8h_1a043d4d870e73c363828cb5e0ba370cbb"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_async_session_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv419nux_async_session_t" title="nux_async_session_t"><span class="pre">nux_async_session_t</span></a> <em><span class="pre">sess</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425nux_async_session_destroy19nux_async_session_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy an asynchronous session. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv428nux_completion_queue_destroy22nux_completion_queue_t">
-<span id="_CPPv328nux_completion_queue_destroy22nux_completion_queue_t"></span><span id="_CPPv228nux_completion_queue_destroy22nux_completion_queue_t"></span><span id="nux_completion_queue_destroy__nux_completion_queue_t"></span><span class="target" id="nux_8h_1ae6423dec3527aa9abbb4a3945750ee00"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_completion_queue_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv422nux_completion_queue_t" title="nux_completion_queue_t"><span class="pre">nux_completion_queue_t</span></a> <em><span class="pre">queue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428nux_completion_queue_destroy22nux_completion_queue_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy a completion queue. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv413nux_input_num11nux_model_t">
-<span id="_CPPv313nux_input_num11nux_model_t"></span><span id="_CPPv213nux_input_num11nux_model_t"></span><span id="nux_input_num__nux_model_t"></span><span class="target" id="nux_8h_1a7738c91ae7d4034a54aae10593ee4252"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_input_num</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413nux_input_num11nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the number of input tensors of the given model. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv414nux_output_num11nux_model_t">
-<span id="_CPPv314nux_output_num11nux_model_t"></span><span id="_CPPv214nux_output_num11nux_model_t"></span><span id="nux_output_num__nux_model_t"></span><span class="target" id="nux_8h_1ad66893954e82d78981d579b06e13f454"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_output_num</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414nux_output_num11nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the number of output tensors of the given model. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv414nux_input_desc11nux_model_t9uintptr_t">
-<span id="_CPPv314nux_input_desc11nux_model_t9uintptr_t"></span><span id="_CPPv214nux_input_desc11nux_model_t9uintptr_t"></span><span id="nux_input_desc__nux_model_t.uintptr_t"></span><span class="target" id="nux_8h_1a4cc5347337275a0bbc954dfb3216559f"></span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <code class="sig-name descname"><span class="pre">nux_input_desc</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em>, <span class="pre">uintptr_t</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414nux_input_desc11nux_model_t9uintptr_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the description of i-th input tensor of the given model. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv415nux_output_desc11nux_model_t9uintptr_t">
-<span id="_CPPv315nux_output_desc11nux_model_t9uintptr_t"></span><span id="_CPPv215nux_output_desc11nux_model_t9uintptr_t"></span><span id="nux_output_desc__nux_model_t.uintptr_t"></span><span class="target" id="nux_8h_1a25c9372c2ad43ddf1224938ff7ebb33f"></span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <code class="sig-name descname"><span class="pre">nux_output_desc</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em>, <span class="pre">uintptr_t</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415nux_output_desc11nux_model_t9uintptr_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the description of i-th output tensor of the given model. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418nux_tensor_dim_num17nux_tensor_desc_t">
-<span id="_CPPv318nux_tensor_dim_num17nux_tensor_desc_t"></span><span id="_CPPv218nux_tensor_dim_num17nux_tensor_desc_t"></span><span id="nux_tensor_dim_num__nux_tensor_desc_t"></span><span class="target" id="nux_8h_1a588e41922d4d06132d6c73448cd3dd48"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_tensor_dim_num</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418nux_tensor_dim_num17nux_tensor_desc_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the number of dimensions of the given tensor. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv414nux_tensor_dim17nux_tensor_desc_t9uintptr_t">
-<span id="_CPPv314nux_tensor_dim17nux_tensor_desc_t9uintptr_t"></span><span id="_CPPv214nux_tensor_dim17nux_tensor_desc_t9uintptr_t"></span><span id="nux_tensor_dim__nux_tensor_desc_t.uintptr_t"></span><span class="target" id="nux_8h_1af60676268150689a95be7ff4ee105317"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_tensor_dim</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">tensor</span></em>, <span class="pre">uintptr_t</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414nux_tensor_dim17nux_tensor_desc_t9uintptr_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the dimension size of the dimension index. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv415nux_tensor_axis17nux_tensor_desc_t9uintptr_t">
-<span id="_CPPv315nux_tensor_axis17nux_tensor_desc_t9uintptr_t"></span><span id="_CPPv215nux_tensor_axis17nux_tensor_desc_t9uintptr_t"></span><span id="nux_tensor_axis__nux_tensor_desc_t.uintptr_t"></span><span class="target" id="nux_8h_1a8a3f51dfe41b1b4c2c314bf587414f5b"></span><em class="property"><span class="pre">enum</span></em> <a class="reference internal" href="#_CPPv44Axis" title="Axis"><span class="pre">Axis</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_axis</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">tensor</span></em>, <span class="pre">uintptr_t</span> <em><span class="pre">idx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415nux_tensor_axis17nux_tensor_desc_t9uintptr_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the axis type of i-th dimension (e.g., Width, Height, Channel) </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv416nux_tensor_dtype17nux_tensor_desc_t">
-<span id="_CPPv316nux_tensor_dtype17nux_tensor_desc_t"></span><span id="_CPPv216nux_tensor_dtype17nux_tensor_desc_t"></span><span id="nux_tensor_dtype__nux_tensor_desc_t"></span><span class="target" id="nux_8h_1ad1ddec37b7e6944742790c0e84d54a72"></span><a class="reference internal" href="#_CPPv418nux_tensor_dtype_t" title="nux_tensor_dtype_t"><span class="pre">nux_tensor_dtype_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_dtype</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416nux_tensor_dtype17nux_tensor_desc_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the tensor data type. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv414nux_tensor_len17nux_tensor_desc_t">
-<span id="_CPPv314nux_tensor_len17nux_tensor_desc_t"></span><span id="_CPPv214nux_tensor_len17nux_tensor_desc_t"></span><span id="nux_tensor_len__nux_tensor_desc_t"></span><span class="target" id="nux_8h_1a735e8fcd63ff8b8de0922ab95b123cda"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_tensor_len</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414nux_tensor_len17nux_tensor_desc_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the total number of all elements. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv415nux_tensor_size17nux_tensor_desc_t">
-<span id="_CPPv315nux_tensor_size17nux_tensor_desc_t"></span><span id="_CPPv215nux_tensor_size17nux_tensor_desc_t"></span><span id="nux_tensor_size__nux_tensor_desc_t"></span><span class="target" id="nux_8h_1a1c5cc132c6c21aecb41a2b6a26fe94ea"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_tensor_size</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415nux_tensor_size17nux_tensor_desc_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the byte size of tensor. </p>
-<p>It will be useful when you have to fill the tensor buffer with data. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv417nux_tensor_create17nux_tensor_desc_t">
-<span id="_CPPv317nux_tensor_create17nux_tensor_desc_t"></span><span id="_CPPv217nux_tensor_create17nux_tensor_desc_t"></span><span id="nux_tensor_create__nux_tensor_desc_t"></span><span class="target" id="nux_8h_1a52d9d4fecc1262ce8ac6a457ecf1c820"></span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_create</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">desc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417nux_tensor_create17nux_tensor_desc_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a tensor according to a given tensor description. </p>
-<p>You have to call <code class="docutils literal notranslate"><span class="pre">nux_tensor_destroy</span></code> to release the resource of a create tensor. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv429nux_tensor_create_with_buffer17nux_tensor_desc_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE">
-<span id="_CPPv329nux_tensor_create_with_buffer17nux_tensor_desc_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE"></span><span id="_CPPv229nux_tensor_create_with_buffer17nux_tensor_desc_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE"></span><span class="target" id="nux_8h_1aab8f50d0285cc45c801e8575d2642ecf"></span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_create_with_buffer</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv417nux_tensor_desc_t" title="nux_tensor_desc_t"><span class="pre">nux_tensor_desc_t</span></a> <em><span class="pre">desc</span></em>, <a class="reference internal" href="#_CPPv412nux_buffer_t" title="nux_buffer_t"><span class="pre">nux_buffer_t</span></a> <em><span class="pre">buffer</span></em>, <a class="reference internal" href="#_CPPv416nux_buffer_len_t" title="nux_buffer_len_t"><span class="pre">nux_buffer_len_t</span></a> <em><span class="pre">len</span></em>, <span class="pre">void</span> <span class="pre">(</span><span class="pre">*</span><em><span class="pre">free</span></em><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint8_t</span><span class="pre">*</span>, <span class="pre">uintptr_t</span><span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429nux_tensor_create_with_buffer17nux_tensor_desc_t12nux_buffer_t16nux_buffer_len_tPFvP7uint8_t9uintptr_tE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a tensor with an exiting buffer. It doesn’t copy the data. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv418nux_tensor_destroy12nux_tensor_t">
-<span id="_CPPv318nux_tensor_destroy12nux_tensor_t"></span><span id="_CPPv218nux_tensor_destroy12nux_tensor_t"></span><span id="nux_tensor_destroy__nux_tensor_t"></span><span class="target" id="nux_8h_1a861a2381c6e005f98924888d88d9e4d4"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_tensor_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418nux_tensor_destroy12nux_tensor_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy a tensor. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv417nux_tensor_buffer12nux_tensor_t">
-<span id="_CPPv317nux_tensor_buffer12nux_tensor_t"></span><span id="_CPPv217nux_tensor_buffer12nux_tensor_t"></span><span id="nux_tensor_buffer__nux_tensor_t"></span><span class="target" id="nux_8h_1ad309d30bab0374303b7f99ebfb9ab525"></span><span class="pre">uint8_t</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">nux_tensor_buffer</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417nux_tensor_buffer12nux_tensor_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the pointer to the buffer of this tensor. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv422nux_tensor_buffer_size12nux_tensor_t">
-<span id="_CPPv322nux_tensor_buffer_size12nux_tensor_t"></span><span id="_CPPv222nux_tensor_buffer_size12nux_tensor_t"></span><span id="nux_tensor_buffer_size__nux_tensor_t"></span><span class="target" id="nux_8h_1ab150b1e024176cba675bfab05335450c"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_tensor_buffer_size</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <em><span class="pre">tensor</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422nux_tensor_buffer_size12nux_tensor_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the size of tensor buffer. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv432nux_tensor_array_allocate_inputs11nux_model_t">
-<span id="_CPPv332nux_tensor_array_allocate_inputs11nux_model_t"></span><span id="_CPPv232nux_tensor_array_allocate_inputs11nux_model_t"></span><span id="nux_tensor_array_allocate_inputs__nux_model_t"></span><span class="target" id="nux_8h_1a78e958bc1fdbcdf6d212bbf75bc0ab44"></span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_array_allocate_inputs</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432nux_tensor_array_allocate_inputs11nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return an array of input tensors with allocated buffers. </p>
-<p>This function is generally used with <a class="reference internal" href="#nux_8h_1acb618caa33b7852140a4c7bf5cea3c93"><span class="std std-ref">tensor_fill_buffer</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv430nux_tensor_array_create_inputs11nux_model_t">
-<span id="_CPPv330nux_tensor_array_create_inputs11nux_model_t"></span><span id="_CPPv230nux_tensor_array_create_inputs11nux_model_t"></span><span id="nux_tensor_array_create_inputs__nux_model_t"></span><span class="target" id="nux_8h_1a08c30289b7de1ee5cd2127eca182cfda"></span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_array_create_inputs</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430nux_tensor_array_create_inputs11nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return an array of input tensors without allocated buffers. </p>
-<p>This function is generally used with <a class="reference internal" href="#nux_8h_1a3139df500cc7640a1516cafae8f3818d"><span class="std std-ref">tensor_set_buffer</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv433nux_tensor_array_allocate_outputs11nux_model_t">
-<span id="_CPPv333nux_tensor_array_allocate_outputs11nux_model_t"></span><span id="_CPPv233nux_tensor_array_allocate_outputs11nux_model_t"></span><span id="nux_tensor_array_allocate_outputs__nux_model_t"></span><span class="target" id="nux_8h_1a17d0ac22d9093471506f24b7f80b2237"></span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_array_allocate_outputs</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433nux_tensor_array_allocate_outputs11nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return an array of output tensors with allocated buffers. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv431nux_tensor_array_create_outputs11nux_model_t">
-<span id="_CPPv331nux_tensor_array_create_outputs11nux_model_t"></span><span id="_CPPv231nux_tensor_array_create_outputs11nux_model_t"></span><span id="nux_tensor_array_create_outputs__nux_model_t"></span><span class="target" id="nux_8h_1a94b43022d166a595ed42e426eecec091"></span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_array_create_outputs</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411nux_model_t" title="nux_model_t"><span class="pre">nux_model_t</span></a> <em><span class="pre">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431nux_tensor_array_create_outputs11nux_model_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return an array of output tensors without allocated buffers. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv420nux_tensor_array_get18nux_tensor_array_t9uintptr_t">
-<span id="_CPPv320nux_tensor_array_get18nux_tensor_array_t9uintptr_t"></span><span id="_CPPv220nux_tensor_array_get18nux_tensor_array_t9uintptr_t"></span><span id="nux_tensor_array_get__nux_tensor_array_t.uintptr_t"></span><span class="target" id="nux_8h_1a44b43c22f7168d71bb7629156a83bc02"></span><a class="reference internal" href="#_CPPv412nux_tensor_t" title="nux_tensor_t"><span class="pre">nux_tensor_t</span></a> <code class="sig-name descname"><span class="pre">nux_tensor_array_get</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">array</span></em>, <span class="pre">uintptr_t</span> <em><span class="pre">index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420nux_tensor_array_get18nux_tensor_array_t9uintptr_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return a tensor from the given tensor array. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv420nux_tensor_array_len18nux_tensor_array_t">
-<span id="_CPPv320nux_tensor_array_len18nux_tensor_array_t"></span><span id="_CPPv220nux_tensor_array_len18nux_tensor_array_t"></span><span id="nux_tensor_array_len__nux_tensor_array_t"></span><span class="target" id="nux_8h_1a51f366a3b8a2d537a25e947a7b7b6a30"></span><span class="pre">uintptr_t</span> <code class="sig-name descname"><span class="pre">nux_tensor_array_len</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">array</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420nux_tensor_array_len18nux_tensor_array_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the number of tensors in the given tensor array. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv424nux_tensor_array_destroy18nux_tensor_array_t">
-<span id="_CPPv324nux_tensor_array_destroy18nux_tensor_array_t"></span><span id="_CPPv224nux_tensor_array_destroy18nux_tensor_array_t"></span><span id="nux_tensor_array_destroy__nux_tensor_array_t"></span><span class="target" id="nux_8h_1a5694060a448a96fab52667650312336b"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">nux_tensor_array_destroy</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv418nux_tensor_array_t" title="nux_tensor_array_t"><span class="pre">nux_tensor_array_t</span></a> <em><span class="pre">array</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424nux_tensor_array_destroy18nux_tensor_array_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Destroy a tensor array. </p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-consts">
+<span id="consts"></span><h1>Consts<a class="headerlink" href="#module-consts" title="Permalink to this headline">¶</a></h1>
+<p>It contains constant values commonly used in the SDK</p>
+</div>
+<div class="section" id="module-quantizer">
+<span id="quantizer"></span><h1>Quantizer<a class="headerlink" href="#module-quantizer" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-utils">
+<span id="utils"></span><h1>Utils<a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="utils.get_sdk_version">
+<code class="sig-prename descclassname"><span class="pre">utils.</span></code><code class="sig-name descname"><span class="pre">get_sdk_version</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.get_sdk_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the git commit hash representing the current version of the application.</p>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
 </div>
 
 
@@ -1500,7 +291,7 @@ cc sync_example.c -I<span class="si">${</span><span class="nv">NUX_DIR</span><sp
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, FuriosaAI Inc..
+        &#169; Copyright 2021, FuriosaAI.
 
     </p>
   </div>
