@@ -86,9 +86,7 @@
             
               <p class="caption"><span class="caption-text">Python SDK Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client.html#compiler">Compiler</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="const.html">Consts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantizer.html">Quantizer</a></li>
@@ -161,12 +159,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-config">
-<span id="config"></span><h1>Config<a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-furiosa.config">
+<span id="config"></span><h1>Config<a class="headerlink" href="#module-furiosa.config" title="Permalink to this headline">¶</a></h1>
 <p>FuriosaSDK Config</p>
 <dl class="py function">
-<dt id="config.load_furiosa_config">
-<code class="sig-prename descclassname"><span class="pre">config.</span></code><code class="sig-name descname"><span class="pre">load_furiosa_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#config.load_furiosa_config" title="Permalink to this definition">¶</a></dt>
+<dt id="furiosa.config.load_furiosa_config">
+<code class="sig-prename descclassname"><span class="pre">furiosa.config.</span></code><code class="sig-name descname"><span class="pre">load_furiosa_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#furiosa.config.load_furiosa_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads the local configuration of FuriosaAI SDK and set the configs
 to the default OpenAPI configuration.</p>
 <dl class="field-list simple">
@@ -180,8 +178,8 @@ to the default OpenAPI configuration.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="config.set_apikey">
-<code class="sig-prename descclassname"><span class="pre">config.</span></code><code class="sig-name descname"><span class="pre">set_apikey</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">access_key_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secret_access_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.set_apikey" title="Permalink to this definition">¶</a></dt>
+<dt id="furiosa.config.set_apikey">
+<code class="sig-prename descclassname"><span class="pre">furiosa.config.</span></code><code class="sig-name descname"><span class="pre">set_apikey</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">access_key_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secret_access_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.config.set_apikey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply API keys to OpenAPI client configuration</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -198,12 +196,12 @@ to the default OpenAPI configuration.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="config.ConfigLoader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">config.</span></code><code class="sig-name descname"><span class="pre">ConfigLoader</span></code><a class="headerlink" href="#config.ConfigLoader" title="Permalink to this definition">¶</a></dt>
+<dt id="furiosa.config.ConfigLoader">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.config.</span></code><code class="sig-name descname"><span class="pre">ConfigLoader</span></code><a class="headerlink" href="#furiosa.config.ConfigLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>ClassLoader loads the local configuration of FuriosaAI SDK.</p>
 <dl class="py method">
-<dt id="config.ConfigLoader.apply">
-<code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">furiosa.openapi.configuration.Configuration</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#config.ConfigLoader.apply" title="Permalink to this definition">¶</a></dt>
+<dt id="furiosa.config.ConfigLoader.apply">
+<code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_configuration</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">furiosa.openapi.configuration.Configuration</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#furiosa.config.ConfigLoader.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the loaded configuration to OpenAPI Configuration
 :param client_configuration: OpenAPI client configuration
 :return:</p>
