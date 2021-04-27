@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quantizer &mdash; FuriosaAI Python SDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Runtime" href="runtime.html" />
+    <link rel="prev" title="Consts" href="const.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FuriosaAI Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Python SDK Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html#compiler">Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="const.html">Consts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-onnx.__init__">Onnx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-operator">IR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spec.__init__">Spec</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runtime.html">Runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FuriosaAI Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Quantizer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quantizer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-quantizer">
+<span id="quantizer"></span><h1>Quantizer<a class="headerlink" href="#module-quantizer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-onnx.__init__">
+<span id="onnx"></span><h2>Onnx<a class="headerlink" href="#module-onnx.__init__" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="onnx.__init__.load">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_external_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.ModelProto</span><a class="headerlink" href="#onnx.__init__.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a serialized ModelProto into memory
+load_external_data is true if the external data under the same directory of the model and load the external data
+If not, users need to call load_external_data_for_model with directory to load</p>
+<p>&#64;params
+f can be a file-like object (has “read” function) or a string containing a file name
+format is for future use</p>
+<p>&#64;return
+Loaded in-memory ModelProto</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.load_from_string">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">load_from_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.ModelProto</span><a class="headerlink" href="#onnx.__init__.load_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a binary string (bytes) that contains serialized ModelProto</p>
+<p>&#64;params
+s is a string, which contains serialized ModelProto
+format is for future use</p>
+<p>&#64;return
+Loaded in-memory ModelProto</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.load_model">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">load_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_external_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.ModelProto</span><a class="headerlink" href="#onnx.__init__.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a serialized ModelProto into memory
+load_external_data is true if the external data under the same directory of the model and load the external data
+If not, users need to call load_external_data_for_model with directory to load</p>
+<p>&#64;params
+f can be a file-like object (has “read” function) or a string containing a file name
+format is for future use</p>
+<p>&#64;return
+Loaded in-memory ModelProto</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.load_model_from_string">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">load_model_from_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.ModelProto</span><a class="headerlink" href="#onnx.__init__.load_model_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a binary string (bytes) that contains serialized ModelProto</p>
+<p>&#64;params
+s is a string, which contains serialized ModelProto
+format is for future use</p>
+<p>&#64;return
+Loaded in-memory ModelProto</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.load_tensor">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">load_tensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.TensorProto</span><a class="headerlink" href="#onnx.__init__.load_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a serialized TensorProto into memory</p>
+<p>&#64;params
+f can be a file-like object (has “read” function) or a string containing a file name
+format is for future use</p>
+<p>&#64;return
+Loaded in-memory TensorProto</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.load_tensor_from_string">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">load_tensor_from_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.TensorProto</span><a class="headerlink" href="#onnx.__init__.load_tensor_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a binary string (bytes) that contains serialized TensorProto</p>
+<p>&#64;params
+s is a string, which contains serialized TensorProto
+format is for future use</p>
+<p>&#64;return
+Loaded in-memory TensorProto</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.save">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proto</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">onnx.onnx_ml_pb2.ModelProto</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#onnx.__init__.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the ModelProto to the specified path.</p>
+<p>&#64;params
+proto should be a in-memory ModelProto
+f can be a file-like object (has “write” function) or a string containing a file name
+format is for future use</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.save_model">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">save_model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proto</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">onnx.onnx_ml_pb2.ModelProto</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#onnx.__init__.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the ModelProto to the specified path.</p>
+<p>&#64;params
+proto should be a in-memory ModelProto
+f can be a file-like object (has “write” function) or a string containing a file name
+format is for future use</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="onnx.__init__.save_tensor">
+<code class="sig-prename descclassname"><span class="pre">onnx.__init__.</span></code><code class="sig-name descname"><span class="pre">save_tensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proto</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.TensorProto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#onnx.__init__.save_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the TensorProto to the specified path.</p>
+<p>&#64;params
+proto should be a in-memory TensorProto
+f can be a file-like object (has “write” function) or a string containing a file name
+format is for future use</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-operator">
+<span id="ir"></span><h2>IR<a class="headerlink" href="#module-operator" title="Permalink to this headline">¶</a></h2>
+<p>Operator interface.</p>
+<p>This module exports a set of functions implemented in C corresponding
+to the intrinsic operators of Python.  For example, operator.add(x, y)
+is equivalent to the expression x+y.  The function names are those
+used for special methods; variants without leading and trailing
+‘__’ are also provided for convenience.</p>
+<dl class="py function">
+<dt id="operator.abs">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">abs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as abs(a).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.add">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a + b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.and_">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">and_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.and_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &amp; b.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="operator.attrgetter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">attrgetter</span></code><a class="headerlink" href="#operator.attrgetter" title="Permalink to this definition">¶</a></dt>
+<dd><p>attrgetter(attr, …) –&gt; attrgetter object</p>
+<p>Return a callable object that fetches the given attribute(s) from its operand.
+After f = attrgetter(‘name’), the call f(r) returns r.name.
+After g = attrgetter(‘name’, ‘date’), the call g(r) returns (r.name, r.date).
+After h = attrgetter(‘name.first’, ‘name.last’), the call h(r) returns
+(r.name.first, r.name.last).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.concat">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">concat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.concat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a + b, for a and b sequences.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.contains">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">contains</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as b in a (note reversed operands).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.countOf">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">countOf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.countOf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of times b occurs in a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.delitem">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">delitem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.delitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as del a[b].</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.eq">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">eq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.eq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a == b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.floordiv">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">floordiv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.floordiv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a // b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ge">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &gt;= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.getitem">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">getitem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.getitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a[b].</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.gt">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">gt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.gt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &gt; b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.iadd">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">iadd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.iadd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a += b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.iand">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">iand</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.iand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &amp;= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.iconcat">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">iconcat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.iconcat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a += b, for a and b sequences.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ifloordiv">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ifloordiv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ifloordiv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a //= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ilshift">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ilshift</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ilshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &lt;&lt;= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.imatmul">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">imatmul</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.imatmul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &#64;= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.imod">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">imod</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.imod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a %= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.imul">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">imul</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.imul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a <a href="#id1"><span class="problematic" id="id2">*</span></a>= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.index">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a.__index__()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.indexOf">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">indexOf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.indexOf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first index of b in a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.inv">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">inv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.inv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as ~a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.invert">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">invert</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as ~a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ior">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ior</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a <a href="#id3"><span class="problematic" id="id4">|</span></a>= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ipow">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ipow</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ipow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a <a href="#id5"><span class="problematic" id="id6">**</span></a>= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.irshift">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">irshift</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.irshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &gt;&gt;= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.is_">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">is_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.is_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a is b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.is_not">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">is_not</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.is_not" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a is not b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.isub">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">isub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.isub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a -= b.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="operator.itemgetter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">itemgetter</span></code><a class="headerlink" href="#operator.itemgetter" title="Permalink to this definition">¶</a></dt>
+<dd><p>itemgetter(item, …) –&gt; itemgetter object</p>
+<p>Return a callable object that fetches the given item(s) from its operand.
+After f = itemgetter(2), the call f(r) returns r[2].
+After g = itemgetter(2, 5, 3), the call g(r) returns (r[2], r[5], r[3])</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.itruediv">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">itruediv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.itruediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a /= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ixor">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ixor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ixor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a ^= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.le">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">le</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.le" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &lt;= b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.length_hint">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">length_hint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.length_hint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an estimate of the number of items in obj.</p>
+<p>This is useful for presizing containers when building from an iterable.</p>
+<p>If the object supports len(), the result will be exact.
+Otherwise, it may over- or under-estimate by an arbitrary amount.
+The result will be an integer &gt;= 0.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.lshift">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">lshift</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.lshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &lt;&lt; b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.lt">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">lt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.lt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &lt; b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.matmul">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">matmul</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.matmul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &#64; b.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="operator.methodcaller">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">methodcaller</span></code><a class="headerlink" href="#operator.methodcaller" title="Permalink to this definition">¶</a></dt>
+<dd><p>methodcaller(name, …) –&gt; methodcaller object</p>
+<p>Return a callable object that calls the given method on its operand.
+After f = methodcaller(‘name’), the call f(r) returns r.name().
+After g = methodcaller(‘name’, ‘date’, foo=1), the call g(r) returns
+r.name(‘date’, foo=1).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.mod">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">mod</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.mod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a % b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.mul">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">mul</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a * b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.ne">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">ne</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.ne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a != b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.neg">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">neg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.neg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as -a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.not_">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">not_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.not_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as not a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.or_">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">or_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.or_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a | b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.pos">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">pos</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as +a.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.pow">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">pow</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.pow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a ** b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.rshift">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">rshift</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.rshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a &gt;&gt; b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.setitem">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">setitem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.setitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a[b] = c.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.sub">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">sub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a - b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.truediv">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">truediv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.truediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a / b.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.truth">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">truth</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.truth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if a is true, False otherwise.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="operator.xor">
+<code class="sig-prename descclassname"><span class="pre">operator.</span></code><code class="sig-name descname"><span class="pre">xor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#operator.xor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as a ^ b.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spec.__init__">
+<span id="spec"></span><h2>Spec<a class="headerlink" href="#module-spec.__init__" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="runtime.html" class="btn btn-neutral float-right" title="Runtime" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="const.html" class="btn btn-neutral float-left" title="Consts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, FuriosaAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

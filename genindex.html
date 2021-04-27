@@ -82,8 +82,18 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"></div>
+              <p class="caption"><span class="caption-text">Python SDK Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html#compiler">Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="const.html">Consts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantizer.html">Quantizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtime.html">Runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
             
           
         </div>
@@ -152,22 +162,70 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
  | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
  
 </div>
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#config.ConfigLoader.apply">apply() (config.ConfigLoader method)</a>
+      <li><a href="quantizer.html#operator.abs">abs() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.add">add() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.allocate_inputs">allocate_inputs() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.allocate_outputs">allocate_outputs() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.allocated">allocated (furiosa_sdk_runtime.tensor.Tensor attribute)</a>
+</li>
+      <li><a href="quantizer.html#operator.and_">and_() (in module operator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.API_CLIENT_INIT_FAILED">API_CLIENT_INIT_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.ApiClientInitFailed">ApiClientInitFailed</a>
+</li>
+      <li><a href="config.html#config.ConfigLoader.apply">apply() (config.ConfigLoader method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.AsyncSession">AsyncSession (class in furiosa_sdk_runtime.session)</a>
+</li>
+      <li><a href="quantizer.html#operator.attrgetter">attrgetter (class in operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis">Axis (class in furiosa_sdk_runtime.tensor)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.axis">axis() (furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.BATCH">BATCH (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.BATCH_OUTER">BATCH_OUTER (furiosa_sdk_runtime.tensor.Axis attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -175,43 +233,290 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.CHANNEL">CHANNEL (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.CHANNEL_OUTER">CHANNEL_OUTER (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.AsyncSession.close">close() (furiosa_sdk_runtime.session.AsyncSession method)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.session.CompletionQueue.close">(furiosa_sdk_runtime.session.CompletionQueue method)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.session.Session.close">(furiosa_sdk_runtime.session.Session method)</a>
+</li>
+      </ul></li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.COMPILATION_FAILED">COMPILATION_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.CompilationFailed">CompilationFailed</a>
+</li>
+      <li><a href="client.html#compiler.CompilerClient">CompilerClient (class in compiler)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask">CompileTask (class in compiler)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.CompletionQueue">CompletionQueue (class in furiosa_sdk_runtime.session)</a>
+</li>
+      <li><a href="quantizer.html#operator.concat">concat() (in module operator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     config
 
       <ul>
-        <li><a href="index.html#module-config">module</a>
+        <li><a href="config.html#module-config">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#config.ConfigLoader">ConfigLoader (class in config)</a>
+      <li><a href="config.html#config.ConfigLoader">ConfigLoader (class in config)</a>
 </li>
       <li>
     consts
 
       <ul>
-        <li><a href="index.html#module-consts">module</a>
+        <li><a href="const.html#module-consts">module</a>
 </li>
       </ul></li>
+      <li><a href="quantizer.html#operator.contains">contains() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.CompletionQueue.context_ty">context_ty (furiosa_sdk_runtime.session.CompletionQueue attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.copy_from">copy_from() (furiosa_sdk_runtime.tensor.Tensor method)</a>
+</li>
+      <li><a href="quantizer.html#operator.countOf">countOf() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.create">create() (in module furiosa_sdk_runtime.session)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.create_async">create_async() (in module furiosa_sdk_runtime.session)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.create_outputs">create_outputs() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#setup.Develop">Develop (class in setup)</a>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.DataType">DataType (class in furiosa_sdk_runtime.tensor)</a>
 </li>
+      <li><a href="quantizer.html#operator.delitem">delitem() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.desc">desc (furiosa_sdk_runtime.tensor.Tensor attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray.descs">descs (furiosa_sdk_runtime.tensor.TensorArray attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="setup.html#setup.Develop">Develop (class in setup)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.dim">dim() (furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.dtype">dtype() (furiosa_sdk_runtime.tensor.Tensor method)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.dtype">(furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+      </ul></li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.DUMP_PROFILE_FAILED">DUMP_PROFILE_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.eq">eq() (in module operator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.DataType.FLOAT32">FLOAT32 (furiosa_sdk_runtime.tensor.DataType attribute)</a>
+</li>
+      <li><a href="quantizer.html#operator.floordiv">floordiv() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.format">format() (furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+      <li>
+    furiosa_sdk_runtime.__init__
+
+      <ul>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.__init__">module</a>
+</li>
+      </ul></li>
+      <li>
+    furiosa_sdk_runtime.errors
+
+      <ul>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.errors">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    furiosa_sdk_runtime.model
+
+      <ul>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.model">module</a>
+</li>
+      </ul></li>
+      <li>
+    furiosa_sdk_runtime.session
+
+      <ul>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.session">module</a>
+</li>
+      </ul></li>
+      <li>
+    furiosa_sdk_runtime.tensor
+
+      <ul>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.tensor">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#utils.get_sdk_version">get_sdk_version() (in module utils)</a>
+      <li><a href="quantizer.html#operator.ge">ge() (in module operator)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.get_compiler_report">get_compiler_report() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.get_dot_graph">get_dot_graph() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.get_error_message">get_error_message() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.get_ir">get_ir() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.get_logs">get_logs() (compiler.CompileTask method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#setup.git_version">git_version() (in module setup)</a>
+      <li><a href="client.html#compiler.CompileTask.get_memory_alloc_report">get_memory_alloc_report() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="utils.html#utils.get_sdk_version">get_sdk_version() (in module utils)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.GET_TASK_FAILED">GET_TASK_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="quantizer.html#operator.getitem">getitem() (in module operator)</a>
+</li>
+      <li><a href="setup.html#setup.git_version">git_version() (in module setup)</a>
+</li>
+      <li><a href="quantizer.html#operator.gt">gt() (in module operator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.HEIGHT">HEIGHT (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.HEIGHT_OUTER">HEIGHT_OUTER (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.iadd">iadd() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.iand">iand() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.iconcat">iconcat() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.ifloordiv">ifloordiv() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.ilshift">ilshift() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.imatmul">imatmul() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.imod">imod() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.imul">imul() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INCOMPATIBLE_API_CLIENT_ERROR">INCOMPATIBLE_API_CLIENT_ERROR (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INCOMPATIBLE_MODEL">INCOMPATIBLE_MODEL (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.IncompatibleApiClientError">IncompatibleApiClientError</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.IncompatibleModel">IncompatibleModel</a>
+</li>
+      <li><a href="quantizer.html#operator.index">index() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.indexOf">indexOf() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.input">input() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.input_num">input_num() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.inputs">inputs() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.DataType.INT32">INT32 (furiosa_sdk_runtime.tensor.DataType attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.DataType.INT8">INT8 (furiosa_sdk_runtime.tensor.DataType attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INTERNAL_ERROR">INTERNAL_ERROR (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.InternalError">InternalError</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.into_exception">into_exception() (in module furiosa_sdk_runtime.errors)</a>
+</li>
+      <li><a href="quantizer.html#operator.inv">inv() (in module operator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INVALID_BUFFER">INVALID_BUFFER (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INVALID_INPUT_INDEX">INVALID_INPUT_INDEX (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INVALID_INPUTS">INVALID_INPUTS (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INVALID_OUTPUT_INDEX">INVALID_OUTPUT_INDEX (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INVALID_OUTPUTS">INVALID_OUTPUTS (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.INVALID_YAML">INVALID_YAML (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.InvalidYamlException">InvalidYamlException</a>
+</li>
+      <li><a href="quantizer.html#operator.invert">invert() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.ior">ior() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.ipow">ipow() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.irshift">irshift() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.is_">is_() (in module operator)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.is_completed">is_completed() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray.is_empty">is_empty() (furiosa_sdk_runtime.tensor.TensorArray method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.is_err">is_err() (in module furiosa_sdk_runtime.errors)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.is_failed">is_failed() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="quantizer.html#operator.is_not">is_not() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.is_ok">is_ok() (in module furiosa_sdk_runtime.errors)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.is_succeeded">is_succeeded() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="quantizer.html#operator.isub">isub() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.itemgetter">itemgetter (class in operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.itruediv">itruediv() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.ixor">ixor() (in module operator)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -219,7 +524,37 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#config.load_furiosa_config">load_furiosa_config() (in module config)</a>
+      <li><a href="quantizer.html#operator.le">le() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray.len">len (furiosa_sdk_runtime.tensor.TensorArray attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.length">length() (furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+      <li><a href="quantizer.html#operator.length_hint">length_hint() (in module operator)</a>
+</li>
+      <li><a href="client.html#compiler.CompileTask.list_artifacts">list_artifacts() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.load">load() (in module onnx.__init__)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.load_from_string">load_from_string() (in module onnx.__init__)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="config.html#config.load_furiosa_config">load_furiosa_config() (in module config)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.load_model">load_model() (in module onnx.__init__)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.load_model_from_string">load_model_from_string() (in module onnx.__init__)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.load_tensor">load_tensor() (in module onnx.__init__)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.load_tensor_from_string">load_tensor_from_string() (in module onnx.__init__)</a>
+</li>
+      <li><a href="utils.html#utils.login_account">login_account() (in module utils)</a>
+</li>
+      <li><a href="quantizer.html#operator.lshift">lshift() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.lt">lt() (in module operator)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -227,21 +562,191 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.matmul">matmul() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NuxException.message">message() (furiosa_sdk_runtime.errors.NuxException method)</a>
+</li>
+      <li><a href="quantizer.html#operator.methodcaller">methodcaller (class in operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.mod">mod() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model">Model (class in furiosa_sdk_runtime.model)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.MODEL_DEPLOY_FAILED">MODEL_DEPLOY_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.MODEL_EXECUTION_FAILED">MODEL_EXECUTION_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
       <li>
     module
 
       <ul>
-        <li><a href="index.html#module-config">config</a>
+        <li><a href="config.html#module-config">config</a>
 </li>
-        <li><a href="index.html#module-consts">consts</a>
+        <li><a href="const.html#module-consts">consts</a>
 </li>
-        <li><a href="index.html#module-quantizer">quantizer</a>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.__init__">furiosa_sdk_runtime.__init__</a>
 </li>
-        <li><a href="index.html#module-setup">setup</a>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.errors">furiosa_sdk_runtime.errors</a>
 </li>
-        <li><a href="index.html#module-utils">utils</a>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.model">furiosa_sdk_runtime.model</a>
+</li>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.session">furiosa_sdk_runtime.session</a>
+</li>
+        <li><a href="runtime.html#module-furiosa_sdk_runtime.tensor">furiosa_sdk_runtime.tensor</a>
+</li>
+        <li><a href="quantizer.html#module-onnx.__init__">onnx.__init__</a>
+</li>
+        <li><a href="quantizer.html#module-operator">operator</a>
+</li>
+        <li><a href="quantizer.html#module-quantizer">quantizer</a>
+</li>
+        <li><a href="setup.html#module-setup">setup</a>
+</li>
+        <li><a href="quantizer.html#module-spec.__init__">spec.__init__</a>
+</li>
+        <li><a href="utils.html#module-utils">utils</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.ApiClientInitFailed.msg">msg (furiosa_sdk_runtime.errors.ApiClientInitFailed attribute)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.CompilationFailed.msg">(furiosa_sdk_runtime.errors.CompilationFailed attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.IncompatibleApiClientError.msg">(furiosa_sdk_runtime.errors.IncompatibleApiClientError attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.IncompatibleModel.msg">(furiosa_sdk_runtime.errors.IncompatibleModel attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.InternalError.msg">(furiosa_sdk_runtime.errors.InternalError attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.InvalidYamlException.msg">(furiosa_sdk_runtime.errors.InvalidYamlException attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.NoApiKeyException.msg">(furiosa_sdk_runtime.errors.NoApiKeyException attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.NuxException.msg">(furiosa_sdk_runtime.errors.NuxException attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.UnsupportedDataType.msg">(furiosa_sdk_runtime.errors.UnsupportedDataType attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.UnsupportedTensorType.msg">(furiosa_sdk_runtime.errors.UnsupportedTensorType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="quantizer.html#operator.mul">mul() (in module operator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.ApiClientInitFailed.native_err">native_err (furiosa_sdk_runtime.errors.ApiClientInitFailed attribute)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.CompilationFailed.native_err">(furiosa_sdk_runtime.errors.CompilationFailed attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.IncompatibleApiClientError.native_err">(furiosa_sdk_runtime.errors.IncompatibleApiClientError attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.IncompatibleModel.native_err">(furiosa_sdk_runtime.errors.IncompatibleModel attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.InternalError.native_err">(furiosa_sdk_runtime.errors.InternalError attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.InvalidYamlException.native_err">(furiosa_sdk_runtime.errors.InvalidYamlException attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.NoApiKeyException.native_err">(furiosa_sdk_runtime.errors.NoApiKeyException attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.NuxException.native_err">(furiosa_sdk_runtime.errors.NuxException attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.UnsupportedDataType.native_err">(furiosa_sdk_runtime.errors.UnsupportedDataType attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.errors.UnsupportedTensorType.native_err">(furiosa_sdk_runtime.errors.UnsupportedTensorType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NuxException.native_error">native_error() (furiosa_sdk_runtime.errors.NuxException method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError">NativeError (class in furiosa_sdk_runtime.errors)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.ndim">ndim() (furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.ne">ne() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.neg">neg() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.NO_API_KEY">NO_API_KEY (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NoApiKeyException">NoApiKeyException</a>
+</li>
+      <li><a href="quantizer.html#operator.not_">not_() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.numpy">numpy() (furiosa_sdk_runtime.tensor.Tensor method)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray.numpy">(furiosa_sdk_runtime.tensor.TensorArray method)</a>
+</li>
+      </ul></li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.DataType.numpy_dtype">numpy_dtype() (furiosa_sdk_runtime.tensor.DataType method)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.numpy_dtype">(furiosa_sdk_runtime.tensor.Tensor method)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.numpy_dtype">(furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.numpy_dtype">(in module furiosa_sdk_runtime.tensor)</a>
+</li>
+      </ul></li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.NUX_CREATION_FAILED">NUX_CREATION_FAILED (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NuxException">NuxException</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    onnx.__init__
+
+      <ul>
+        <li><a href="quantizer.html#module-onnx.__init__">module</a>
+</li>
+      </ul></li>
+      <li>
+    operator
+
+      <ul>
+        <li><a href="quantizer.html#module-operator">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.or_">or_() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.output">output() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.CompletionQueue.output_descs">output_descs (furiosa_sdk_runtime.session.CompletionQueue attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.output_num">output_num() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.outputs">outputs() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="client.html#compiler.CompileTask.phase">phase() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="quantizer.html#operator.pos">pos() (in module operator)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.pow">pow() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.print_summary">print_summary() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -252,45 +757,142 @@
     quantizer
 
       <ul>
-        <li><a href="index.html#module-quantizer">module</a>
+        <li><a href="quantizer.html#module-quantizer">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.QUEUE_NO_DATA">QUEUE_NO_DATA (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.QUEUE_WAIT_TIMEOUT">QUEUE_WAIT_TIMEOUT (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#setup.Develop.run">run() (setup.Develop method)</a>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.CompletionQueue.recv">recv() (furiosa_sdk_runtime.session.CompletionQueue method)</a>
 </li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.AsyncSession.ref">ref (furiosa_sdk_runtime.session.AsyncSession attribute)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.session.CompletionQueue.ref">(furiosa_sdk_runtime.session.CompletionQueue attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.session.Session.ref">(furiosa_sdk_runtime.session.Session attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.ref">(furiosa_sdk_runtime.tensor.Tensor attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray.ref">(furiosa_sdk_runtime.tensor.TensorArray attribute)</a>
+</li>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.ref">(furiosa_sdk_runtime.tensor.TensorDesc attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.rshift">rshift() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.Session.run">run() (furiosa_sdk_runtime.session.Session method)</a>
+
+      <ul>
+        <li><a href="setup.html#setup.Develop.run">(setup.Develop method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#config.set_apikey">set_apikey() (in module config)</a>
+      <li><a href="quantizer.html#onnx.__init__.save">save() (in module onnx.__init__)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#onnx.__init__.save_model">save_model() (in module onnx.__init__)</a>
+</li>
+      <li><a href="quantizer.html#onnx.__init__.save_tensor">save_tensor() (in module onnx.__init__)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.Session">Session (class in furiosa_sdk_runtime.session)</a>
+</li>
+      <li><a href="config.html#config.set_apikey">set_apikey() (in module config)</a>
+</li>
+      <li><a href="quantizer.html#operator.setitem">setitem() (in module operator)</a>
+</li>
       <li>
     setup
 
       <ul>
-        <li><a href="index.html#module-setup">module</a>
+        <li><a href="setup.html#module-setup">module</a>
 </li>
       </ul></li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor.shape">shape() (furiosa_sdk_runtime.tensor.Tensor method)</a>
+
+      <ul>
+        <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.shape">(furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray.should_drop">should_drop (furiosa_sdk_runtime.tensor.TensorArray attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc.size">size() (furiosa_sdk_runtime.tensor.TensorDesc method)</a>
+</li>
+      <li>
+    spec.__init__
+
+      <ul>
+        <li><a href="quantizer.html#module-spec.__init__">module</a>
+</li>
+      </ul></li>
+      <li><a href="quantizer.html#operator.sub">sub() (in module operator)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.session.AsyncSession.submit">submit() (furiosa_sdk_runtime.session.AsyncSession method)</a>
+</li>
+      <li><a href="client.html#compiler.CompilerClient.submit_compile">submit_compile() (compiler.CompilerClient method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.NativeError.SUCCESS">SUCCESS (furiosa_sdk_runtime.errors.NativeError attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.model.Model.summary">summary() (furiosa_sdk_runtime.model.Model method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="client.html#compiler.CompileTask.task_id">task_id() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Tensor">Tensor (class in furiosa_sdk_runtime.tensor)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorArray">TensorArray (class in furiosa_sdk_runtime.tensor)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.TensorDesc">TensorDesc (class in furiosa_sdk_runtime.tensor)</a>
+</li>
+      <li><a href="quantizer.html#operator.truediv">truediv() (in module operator)</a>
+</li>
+      <li><a href="quantizer.html#operator.truth">truth() (in module operator)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.DataType.UINT8">UINT8 (furiosa_sdk_runtime.tensor.DataType attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.UNKNOWN">UNKNOWN (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.UnsupportedDataType">UnsupportedDataType</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.errors.UnsupportedTensorType">UnsupportedTensorType</a>
+</li>
       <li>
     utils
 
       <ul>
-        <li><a href="index.html#module-utils">module</a>
+        <li><a href="utils.html#module-utils">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -299,7 +901,23 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#setup.write_version">write_version() (in module setup)</a>
+      <li><a href="client.html#compiler.CompileTask.wait_for_complete">wait_for_complete() (compiler.CompileTask method)</a>
+</li>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.WIDTH">WIDTH (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="runtime.html#furiosa_sdk_runtime.tensor.Axis.WIDTH_OUTER">WIDTH_OUTER (furiosa_sdk_runtime.tensor.Axis attribute)</a>
+</li>
+      <li><a href="setup.html#setup.write_version">write_version() (in module setup)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="quantizer.html#operator.xor">xor() (in module operator)</a>
 </li>
   </ul></td>
 </tr></table>
