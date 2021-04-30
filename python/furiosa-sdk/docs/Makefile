@@ -25,6 +25,10 @@ doc:
 	cp -a ../../furiosa-sdk-quantizer/furiosa_sdk_quantizer $(BUILDDIR)/furiosa/quantizer
 	cp -a ../furiosa $(BUILDDIR)/
 	@$(SPHINXBUILD) -c ./ -b html . $(BUILDDIR)/html 
+	sphinx-apidoc -F $(BUILDDIR)/furiosa -o build
+	cd build
+	make html
+	
 
 clean:
 	rm -rf $(BUILDDIR)
