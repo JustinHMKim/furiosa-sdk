@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>quantizer.frontend.onnx.quantizer package &mdash; FuriosaAI Python SDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="quantizer.frontend.onnx.spec package" href="quantizer.frontend.onnx.spec.html" />
+    <link rel="prev" title="quantizer.frontend.onnx package" href="quantizer.frontend.onnx.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FuriosaAI Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="furiosa.html">furiosa package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="quantizer.html">quantizer package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="quantizer.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quantizer.frontend.html">quantizer.frontend package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="quantizer.frontend.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quantizer.frontend.html#module-quantizer.frontend">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quantizer.interfaces.html">quantizer.interfaces package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantizer.ir.html">quantizer.ir package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quantizer.scripts.html">quantizer.scripts package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quantizer.html#module-quantizer">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="runtime.html">runtime package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FuriosaAI Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="quantizer.html">quantizer package</a> &raquo;</li>
+        
+          <li><a href="quantizer.frontend.html">quantizer.frontend package</a> &raquo;</li>
+        
+          <li><a href="quantizer.frontend.onnx.html">quantizer.frontend.onnx package</a> &raquo;</li>
+        
+      <li>quantizer.frontend.onnx.quantizer package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quantizer.frontend.onnx.quantizer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quantizer-frontend-onnx-quantizer-package">
+<h1>quantizer.frontend.onnx.quantizer package<a class="headerlink" href="#quantizer-frontend-onnx-quantizer-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-quantizer.frontend.onnx.quantizer.calibrator">
+<span id="quantizer-frontend-onnx-quantizer-calibrator-module"></span><h2>quantizer.frontend.onnx.quantizer.calibrator module<a class="headerlink" href="#module-quantizer.frontend.onnx.quantizer.calibrator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.calibrator.</span></code><code class="sig-name descname"><span class="pre">ONNXCalibrator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.ModelProto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.augment_model">
+<code class="sig-name descname"><span class="pre">augment_model</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.augment_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.build_calibration_model">
+<code class="sig-name descname"><span class="pre">build_calibration_model</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.ModelProto</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.build_calibration_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.calibrate">
+<code class="sig-name descname"><span class="pre">calibrate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.calibrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the range of tensors, based on a dataset.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dataset: A calibration dataset.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A dict mapping tensors that precede ReduceMin and ReduceMax
+to their minimum and maximum values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.calibrate_with_random">
+<code class="sig-name descname"><span class="pre">calibrate_with_random</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.calibrator.ONNXCalibrator.calibrate_with_random" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Gather intermediate model outputs after running inference</dt><dd><p>parameter model_path: path to augmented FP32 ONNX model
+parameter inputs: list of loaded test inputs (or image matrices)
+return: dictionary mapping added node names to (ReduceMin, ReduceMax) pairs</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.calibrator.calibrate">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.calibrator.</span></code><code class="sig-name descname"><span class="pre">calibrate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.ModelProto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.calibrator.calibrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the range of tensors in a model, based on a dataset.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>model: An ONNX model augmented with ReduceMin and ReduceMax.
+dataset: A calibration dataset.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A dict mapping tensors that precede ReduceMin and ReduceMax to
+their minimum and maximum values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-quantizer.frontend.onnx.quantizer.quantizer">
+<span id="quantizer-frontend-onnx-quantizer-quantizer-module"></span><h2>quantizer.frontend.onnx.quantizer.quantizer module<a class="headerlink" href="#module-quantizer.frontend.onnx.quantizer.quantizer" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.DFGImportable">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.quantizer.</span></code><code class="sig-name descname"><span class="pre">DFGImportable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.DFGImportable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.DFGImportable.remove_quantizelinear_operator_with_initializer">
+<code class="sig-name descname"><span class="pre">remove_quantizelinear_operator_with_initializer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.DFGImportable.remove_quantizelinear_operator_with_initializer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.DFGImportable.transform">
+<code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.DFGImportable.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.DFGImportable.transform_to_integer_arithmetic_operator">
+<code class="sig-name descname"><span class="pre">transform_to_integer_arithmetic_operator</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.DFGImportable.transform_to_integer_arithmetic_operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.quantizer.</span></code><code class="sig-name descname"><span class="pre">FuriosaONNXQuantizer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.ModelProto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">per_channel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">furiosa_sdk_quantizer.frontend.onnx.quantizer.utils.QuantizationMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dynamic_ranges</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.build_quantized_model">
+<code class="sig-name descname"><span class="pre">build_quantized_model</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.build_quantized_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.check_model">
+<code class="sig-name descname"><span class="pre">check_model</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.check_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.make_quant_dequant_node">
+<code class="sig-name descname"><span class="pre">make_quant_dequant_node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.make_quant_dequant_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.quantize">
+<code class="sig-name descname"><span class="pre">quantize</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">onnx.onnx_ml_pb2.ModelProto</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.quantize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.quantize_model">
+<code class="sig-name descname"><span class="pre">quantize_model</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.FuriosaONNXQuantizer.quantize_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.ONNXRuntimeExecutable">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.quantizer.</span></code><code class="sig-name descname"><span class="pre">ONNXRuntimeExecutable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.ONNXRuntimeExecutable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#quantizer.frontend.onnx.quantizer.quantizer.DFGImportable" title="quantizer.frontend.onnx.quantizer.quantizer.DFGImportable"><code class="xref py py-class docutils literal notranslate"><span class="pre">quantizer.frontend.onnx.quantizer.quantizer.DFGImportable</span></code></a></p>
+<dl class="py method">
+<dt id="quantizer.frontend.onnx.quantizer.quantizer.ONNXRuntimeExecutable.transform">
+<code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.quantizer.ONNXRuntimeExecutable.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-quantizer.frontend.onnx.quantizer.utils">
+<span id="quantizer-frontend-onnx-quantizer-utils-module"></span><h2>quantizer.frontend.onnx.quantizer.utils module<a class="headerlink" href="#module-quantizer.frontend.onnx.quantizer.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="quantizer.frontend.onnx.quantizer.utils.QuantizationMode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">QuantizationMode</span></code><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.QuantizationMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="quantizer.frontend.onnx.quantizer.utils.QuantizationMode.dfg">
+<code class="sig-name descname"><span class="pre">dfg</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.QuantizationMode.dfg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="quantizer.frontend.onnx.quantizer.utils.QuantizationMode.fake">
+<code class="sig-name descname"><span class="pre">fake</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.QuantizationMode.fake" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.activation_scale_zeropoint">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">activation_scale_zeropoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_qtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.activation_scale_zeropoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.append_suffix">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">append_suffix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.append_suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to append suffixes to the given name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.asymmetric_scale_zeropoint">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">asymmetric_scale_zeropoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_qtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.asymmetric_scale_zeropoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>source: onnxruntime quantization tools</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.attribute_to_kwargs">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">attribute_to_kwargs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.AttributeProto</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.attribute_to_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.calculate_activation_quant_params">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">calculate_activation_quant_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamic_ranges</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">onnx.onnx_ml_pb2.NodeProto</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_qtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.TensorProto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.calculate_activation_quant_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.calculate_weight_quant_params">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">calculate_weight_quant_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_qtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.TensorProto</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.calculate_weight_quant_params" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – data to quantize</p></li>
+<li><p><strong>weight_qtype</strong> – quantization data type of weight</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>quantized weights, zero point, scale</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>To pack weights, we compute a linear transformation</dt><dd><ul class="simple">
+<li><p>when data type == uint8 mode, from [rmin, rmax] -&gt; [0, 2^{b-1}] and</p></li>
+<li><dl class="simple">
+<dt>when data type == int8, from [-m , m] -&gt; [-(2^{b-1}-1), 2^{b-1}-1] where</dt><dd><p>m = max(abs(rmin), abs(rmax))</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>and add necessary intermediate nodes to trasnform quantized weight to full weight using the equation
+r = S(q-z), where</p>
+<blockquote>
+<div><p>r: real original value
+q: quantized value
+S: scale
+z: zero point</p>
+</div></blockquote>
+<p>source: onnxruntime quantization tools</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.get_input_tensors">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">get_input_tensors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">onnx.onnx_ml_pb2.ModelProto</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.get_input_tensors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.get_qrange">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">get_qrange</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.get_qrange" title="Permalink to this definition">¶</a></dt>
+<dd><p>source: onnxruntime quantization tools</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.get_vi_dtype">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">get_vi_dtype</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.get_vi_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns value_info’s data type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vi</strong> – graph.value_info</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>graph.value_info.type.tensor_type.elem_type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.is_float_tensor">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">is_float_tensor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.is_float_tensor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="quantizer.frontend.onnx.quantizer.utils.make_tensor_annotation">
+<code class="sig-prename descclassname"><span class="pre">quantizer.frontend.onnx.quantizer.utils.</span></code><code class="sig-name descname"><span class="pre">make_tensor_annotation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_point_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantizer.frontend.onnx.quantizer.utils.make_tensor_annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to make_tensor_annotation</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-quantizer.frontend.onnx.quantizer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-quantizer.frontend.onnx.quantizer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="quantizer.frontend.onnx.spec.html" class="btn btn-neutral float-right" title="quantizer.frontend.onnx.spec package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quantizer.frontend.onnx.html" class="btn btn-neutral float-left" title="quantizer.frontend.onnx package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, FuriosaAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

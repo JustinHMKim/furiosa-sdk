@@ -1,0 +1,21 @@
+quantizer.frontend.onnx package
+===============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   quantizer.frontend.onnx.quantizer
+   quantizer.frontend.onnx.spec
+   quantizer.frontend.onnx.transformer
+   quantizer.frontend.onnx.utils
+
+Module contents
+---------------
+
+.. automodule:: quantizer.frontend.onnx
+   :members:
+   :undoc-members:
+   :show-inheritance:

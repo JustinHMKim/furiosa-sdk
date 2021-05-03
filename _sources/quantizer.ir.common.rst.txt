@@ -1,0 +1,21 @@
+quantizer.ir.common package
+===========================
+
+Submodules
+----------
+
+quantizer.ir.common.operator module
+-----------------------------------
+
+.. automodule:: quantizer.ir.common.operator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: quantizer.ir.common
+   :members:
+   :undoc-members:
+   :show-inheritance:

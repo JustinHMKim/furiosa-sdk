@@ -1,0 +1,1250 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>furiosa.openapi.model package &mdash; FuriosaAI Python SDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="furiosa.openapi.models package" href="furiosa.openapi.models.html" />
+    <link rel="prev" title="furiosa.openapi.apis package" href="furiosa.openapi.apis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FuriosaAI Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="furiosa.html">furiosa package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="furiosa.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="furiosa.client.html">furiosa.client package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="furiosa.openapi.html">furiosa.openapi package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="furiosa.openapi.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.api_client">furiosa.openapi.api_client module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.configuration">furiosa.openapi.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.exceptions">furiosa.openapi.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.model_utils">furiosa.openapi.model_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.rest">furiosa.openapi.rest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="furiosa.runtime.html">furiosa.runtime package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.config">furiosa.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.consts">furiosa.consts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.quantizer">furiosa.quantizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.utils">furiosa.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quantizer.html">quantizer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtime.html">runtime package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FuriosaAI Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="furiosa.html">furiosa package</a> &raquo;</li>
+        
+          <li><a href="furiosa.openapi.html">furiosa.openapi package</a> &raquo;</li>
+        
+      <li>furiosa.openapi.model package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/furiosa.openapi.model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="furiosa-openapi-model-package">
+<h1>furiosa.openapi.model package<a class="headerlink" href="#furiosa-openapi-model-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-furiosa.openapi.model.api_key">
+<span id="furiosa-openapi-model-api-key-module"></span><h2>furiosa.openapi.model.api_key module<a class="headerlink" href="#module-furiosa.openapi.model.api_key" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.api_key.ApiKey">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.api_key.</span></code><code class="sig-name descname"><span class="pre">ApiKey</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'access_key_id':</span> <span class="pre">'access_key_id',</span> <span class="pre">'active':</span> <span class="pre">'active',</span> <span class="pre">'created_at':</span> <span class="pre">'created_at',</span> <span class="pre">'description':</span> <span class="pre">'description',</span> <span class="pre">'name':</span> <span class="pre">'name',</span> <span class="pre">'secret_access_key':</span> <span class="pre">'secret_access_key'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'access_key_id':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'active':</span> <span class="pre">(&lt;class</span> <span class="pre">'bool'&gt;,),</span> <span class="pre">'created_at':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'description':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'name':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'secret_access_key':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key.ApiKey.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key.ApiKey.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.api_key_patch">
+<span id="furiosa-openapi-model-api-key-patch-module"></span><h2>furiosa.openapi.model.api_key_patch module<a class="headerlink" href="#module-furiosa.openapi.model.api_key_patch" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.api_key_patch.</span></code><code class="sig-name descname"><span class="pre">ApiKeyPatch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'active':</span> <span class="pre">'active'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'active':</span> <span class="pre">(&lt;class</span> <span class="pre">'bool'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_patch.ApiKeyPatch.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_patch.ApiKeyPatch.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.api_key_request">
+<span id="furiosa-openapi-model-api-key-request-module"></span><h2>furiosa.openapi.model.api_key_request module<a class="headerlink" href="#module-furiosa.openapi.model.api_key_request" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.api_key_request.</span></code><code class="sig-name descname"><span class="pre">ApiKeyRequest</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'description':</span> <span class="pre">'description',</span> <span class="pre">'name':</span> <span class="pre">'name'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'description':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'name':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_key_request.ApiKeyRequest.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_key_request.ApiKeyRequest.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.api_response">
+<span id="furiosa-openapi-model-api-response-module"></span><h2>furiosa.openapi.model.api_response module<a class="headerlink" href="#module-furiosa.openapi.model.api_response" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.api_response.ApiResponse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.api_response.</span></code><code class="sig-name descname"><span class="pre">ApiResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'code':</span> <span class="pre">'code',</span> <span class="pre">'message':</span> <span class="pre">'message',</span> <span class="pre">'trace_id':</span> <span class="pre">'trace_id'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'code':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'message':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'trace_id':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.api_response.ApiResponse.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.api_response.ApiResponse.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.artifact_meta">
+<span id="furiosa-openapi-model-artifact-meta-module"></span><h2>furiosa.openapi.model.artifact_meta module<a class="headerlink" href="#module-furiosa.openapi.model.artifact_meta" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.artifact_meta.</span></code><code class="sig-name descname"><span class="pre">ArtifactMeta</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'content_type':</span> <span class="pre">'content_type',</span> <span class="pre">'name':</span> <span class="pre">'name',</span> <span class="pre">'size':</span> <span class="pre">'size'}</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'content_type':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'name':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'size':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.artifact_meta.ArtifactMeta.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.artifact_meta.ArtifactMeta.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.compile_task">
+<span id="furiosa-openapi-model-compile-task-module"></span><h2>furiosa.openapi.model.compile_task module<a class="headerlink" href="#module-furiosa.openapi.model.compile_task" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.compile_task.CompileTask">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.compile_task.</span></code><code class="sig-name descname"><span class="pre">CompileTask</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'error_message':</span> <span class="pre">'error_message',</span> <span class="pre">'finish_time':</span> <span class="pre">'finish_time',</span> <span class="pre">'phase':</span> <span class="pre">'phase',</span> <span class="pre">'progress':</span> <span class="pre">'progress',</span> <span class="pre">'start_time':</span> <span class="pre">'start_time',</span> <span class="pre">'submit_time':</span> <span class="pre">'submit_time',</span> <span class="pre">'task_id':</span> <span class="pre">'task_id',</span> <span class="pre">'version':</span> <span class="pre">'version'}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'error_message':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'finish_time':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'phase':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'progress':</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,),</span> <span class="pre">'start_time':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'submit_time':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'task_id':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'version':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task.CompileTask.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task.CompileTask.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.compile_task_list">
+<span id="furiosa-openapi-model-compile-task-list-module"></span><h2>furiosa.openapi.model.compile_task_list module<a class="headerlink" href="#module-furiosa.openapi.model.compile_task_list" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.compile_task_list.</span></code><code class="sig-name descname"><span class="pre">CompileTaskList</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelSimple" title="furiosa.openapi.model_utils.ModelSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelSimple</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'value':</span> <span class="pre">([&lt;class</span> <span class="pre">'furiosa.openapi.model.compile_task.CompileTask'&gt;],)}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.compile_task_list.CompileTaskList.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.CompileTaskList.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="furiosa.openapi.model.compile_task_list.lazy_import">
+<code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.compile_task_list.</span></code><code class="sig-name descname"><span class="pre">lazy_import</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.compile_task_list.lazy_import" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.inline_object">
+<span id="furiosa-openapi-model-inline-object-module"></span><h2>furiosa.openapi.model.inline_object module<a class="headerlink" href="#module-furiosa.openapi.model.inline_object" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.inline_object.InlineObject">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.inline_object.</span></code><code class="sig-name descname"><span class="pre">InlineObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'company':</span> <span class="pre">'company',</span> <span class="pre">'email':</span> <span class="pre">'email',</span> <span class="pre">'given_name':</span> <span class="pre">'given_name',</span> <span class="pre">'password':</span> <span class="pre">'password',</span> <span class="pre">'phone':</span> <span class="pre">'phone',</span> <span class="pre">'surname':</span> <span class="pre">'surname'}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'company':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'email':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'given_name':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'password':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'phone':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'surname':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object.InlineObject.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object.InlineObject.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.inline_object1">
+<span id="furiosa-openapi-model-inline-object1-module"></span><h2>furiosa.openapi.model.inline_object1 module<a class="headerlink" href="#module-furiosa.openapi.model.inline_object1" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.inline_object1.</span></code><code class="sig-name descname"><span class="pre">InlineObject1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'new_password':</span> <span class="pre">'new_password',</span> <span class="pre">'old_password':</span> <span class="pre">'old_password'}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'new_password':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'old_password':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_object1.InlineObject1.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_object1.InlineObject1.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.inline_response200">
+<span id="furiosa-openapi-model-inline-response200-module"></span><h2>furiosa.openapi.model.inline_response200 module<a class="headerlink" href="#module-furiosa.openapi.model.inline_response200" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.inline_response200.</span></code><code class="sig-name descname"><span class="pre">InlineResponse200</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'company':</span> <span class="pre">'company',</span> <span class="pre">'email':</span> <span class="pre">'email',</span> <span class="pre">'given_name':</span> <span class="pre">'given_name',</span> <span class="pre">'joined_at':</span> <span class="pre">'joined_at',</span> <span class="pre">'last_updated_at':</span> <span class="pre">'last_updated_at',</span> <span class="pre">'phone':</span> <span class="pre">'phone',</span> <span class="pre">'surname':</span> <span class="pre">'surname'}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'company':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'email':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'given_name':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'joined_at':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'last_updated_at':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'phone':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'surname':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.inline_response200.InlineResponse200.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.inline_response200.InlineResponse200.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.login_output">
+<span id="furiosa-openapi-model-login-output-module"></span><h2>furiosa.openapi.model.login_output module<a class="headerlink" href="#module-furiosa.openapi.model.login_output" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.login_output.LoginOutput">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.login_output.</span></code><code class="sig-name descname"><span class="pre">LoginOutput</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'access_token':</span> <span class="pre">'access_token',</span> <span class="pre">'expires_at':</span> <span class="pre">'expires_at',</span> <span class="pre">'token_type':</span> <span class="pre">'token_type'}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'access_token':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'expires_at':</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;,),</span> <span class="pre">'token_type':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_output.LoginOutput.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_output.LoginOutput.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.login_request">
+<span id="furiosa-openapi-model-login-request-module"></span><h2>furiosa.openapi.model.login_request module<a class="headerlink" href="#module-furiosa.openapi.model.login_request" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.login_request.LoginRequest">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.login_request.</span></code><code class="sig-name descname"><span class="pre">LoginRequest</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'email':</span> <span class="pre">'email',</span> <span class="pre">'password':</span> <span class="pre">'password',</span> <span class="pre">'remember_me':</span> <span class="pre">'remember_me'}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'email':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'password':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'remember_me':</span> <span class="pre">(&lt;class</span> <span class="pre">'bool'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.login_request.LoginRequest.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.login_request.LoginRequest.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.toolchains">
+<span id="furiosa-openapi-model-toolchains-module"></span><h2>furiosa.openapi.model.toolchains module<a class="headerlink" href="#module-furiosa.openapi.model.toolchains" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.toolchains.Toolchains">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.toolchains.</span></code><code class="sig-name descname"><span class="pre">Toolchains</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelSimple" title="furiosa.openapi.model_utils.ModelSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelSimple</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'value':</span> <span class="pre">([{&lt;class</span> <span class="pre">'str'&gt;:</span> <span class="pre">(&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'datetime.date'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'datetime.datetime'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'dict'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'list'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'NoneType'&gt;)}],)}</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.toolchains.Toolchains.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.toolchains.Toolchains.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model.version_info">
+<span id="furiosa-openapi-model-version-info-module"></span><h2>furiosa.openapi.model.version_info module<a class="headerlink" href="#module-furiosa.openapi.model.version_info" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.model.version_info.VersionInfo">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.model.version_info.</span></code><code class="sig-name descname"><span class="pre">VersionInfo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="furiosa.openapi.html#furiosa.openapi.model_utils.ModelNormal" title="furiosa.openapi.model_utils.ModelNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">furiosa.openapi.model_utils.ModelNormal</span></code></a></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator.
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>allowed_values (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+with a capitalized key describing the allowed value and an allowed
+value. These dicts store the allowed enum values.</p>
+</dd>
+<dt>attribute_map (dict): The key is attribute name</dt><dd><p>and the value is json key in definition.</p>
+</dd>
+<dt>discriminator_value_class_map (dict): A dict to go from the discriminator</dt><dd><p>variable value to the discriminator class name.</p>
+</dd>
+<dt>validations (dict): The key is the tuple path to the attribute</dt><dd><p>and the for var_name this is (var_name,). The value is a dict
+that stores validations for max_length, min_length, max_items,
+min_items, exclusive_maximum, inclusive_maximum, exclusive_minimum,
+inclusive_minimum, and regex.</p>
+</dd>
+<dt>additional_properties_type (tuple): A tuple of classes accepted</dt><dd><p>as additional properties values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.additional_properties_type">
+<code class="sig-name descname"><span class="pre">additional_properties_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.additional_properties_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.allowed_values">
+<code class="sig-name descname"><span class="pre">allowed_values</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.allowed_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.attribute_map">
+<code class="sig-name descname"><span class="pre">attribute_map</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'build_time':</span> <span class="pre">'build_time',</span> <span class="pre">'revision':</span> <span class="pre">'revision',</span> <span class="pre">'version':</span> <span class="pre">'version'}</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.attribute_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.discriminator">
+<code class="sig-name descname"><span class="pre">discriminator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.discriminator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.openapi_types">
+<code class="sig-name descname"><span class="pre">openapi_types</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'build_time':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'revision':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,),</span> <span class="pre">'version':</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;,)}</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.openapi_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.required_properties">
+<code class="sig-name descname"><span class="pre">required_properties</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'_check_type',</span> <span class="pre">'_configuration',</span> <span class="pre">'_data_store',</span> <span class="pre">'_path_to_item',</span> <span class="pre">'_spec_property_naming',</span> <span class="pre">'_visited_composed_classes'}</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.required_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="furiosa.openapi.model.version_info.VersionInfo.validations">
+<code class="sig-name descname"><span class="pre">validations</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#furiosa.openapi.model.version_info.VersionInfo.validations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.model">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-furiosa.openapi.model" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="furiosa.openapi.models.html" class="btn btn-neutral float-right" title="furiosa.openapi.models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="furiosa.openapi.apis.html" class="btn btn-neutral float-left" title="furiosa.openapi.apis package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, FuriosaAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

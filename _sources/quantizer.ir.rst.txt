@@ -1,0 +1,19 @@
+quantizer.ir package
+====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   quantizer.ir.common
+   quantizer.ir.spec
+
+Module contents
+---------------
+
+.. automodule:: quantizer.ir
+   :members:
+   :undoc-members:
+   :show-inheritance:

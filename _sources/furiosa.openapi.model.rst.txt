@@ -1,0 +1,125 @@
+furiosa.openapi.model package
+=============================
+
+Submodules
+----------
+
+furiosa.openapi.model.api\_key module
+-------------------------------------
+
+.. automodule:: furiosa.openapi.model.api_key
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.api\_key\_patch module
+--------------------------------------------
+
+.. automodule:: furiosa.openapi.model.api_key_patch
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.api\_key\_request module
+----------------------------------------------
+
+.. automodule:: furiosa.openapi.model.api_key_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.api\_response module
+------------------------------------------
+
+.. automodule:: furiosa.openapi.model.api_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.artifact\_meta module
+-------------------------------------------
+
+.. automodule:: furiosa.openapi.model.artifact_meta
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.compile\_task module
+------------------------------------------
+
+.. automodule:: furiosa.openapi.model.compile_task
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.compile\_task\_list module
+------------------------------------------------
+
+.. automodule:: furiosa.openapi.model.compile_task_list
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.inline\_object module
+-------------------------------------------
+
+.. automodule:: furiosa.openapi.model.inline_object
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.inline\_object1 module
+--------------------------------------------
+
+.. automodule:: furiosa.openapi.model.inline_object1
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.inline\_response200 module
+------------------------------------------------
+
+.. automodule:: furiosa.openapi.model.inline_response200
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.login\_output module
+------------------------------------------
+
+.. automodule:: furiosa.openapi.model.login_output
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.login\_request module
+-------------------------------------------
+
+.. automodule:: furiosa.openapi.model.login_request
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.toolchains module
+---------------------------------------
+
+.. automodule:: furiosa.openapi.model.toolchains
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model.version\_info module
+------------------------------------------
+
+.. automodule:: furiosa.openapi.model.version_info
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: furiosa.openapi.model
+   :members:
+   :undoc-members:
+   :show-inheritance:

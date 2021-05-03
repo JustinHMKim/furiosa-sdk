@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>furiosa.openapi.api package &mdash; FuriosaAI Python SDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="furiosa.openapi.apis package" href="furiosa.openapi.apis.html" />
+    <link rel="prev" title="furiosa.openapi package" href="furiosa.openapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> FuriosaAI Python SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="furiosa.html">furiosa package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="furiosa.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="furiosa.client.html">furiosa.client package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="furiosa.openapi.html">furiosa.openapi package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="furiosa.openapi.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.api_client">furiosa.openapi.api_client module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.configuration">furiosa.openapi.configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.exceptions">furiosa.openapi.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.model_utils">furiosa.openapi.model_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi.rest">furiosa.openapi.rest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="furiosa.openapi.html#module-furiosa.openapi">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="furiosa.runtime.html">furiosa.runtime package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.config">furiosa.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.consts">furiosa.consts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.quantizer">furiosa.quantizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa.utils">furiosa.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="furiosa.html#module-furiosa">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quantizer.html">quantizer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runtime.html">runtime package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FuriosaAI Python SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="furiosa.html">furiosa package</a> &raquo;</li>
+        
+          <li><a href="furiosa.openapi.html">furiosa.openapi package</a> &raquo;</li>
+        
+      <li>furiosa.openapi.api package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/furiosa.openapi.api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="furiosa-openapi-api-package">
+<h1>furiosa.openapi.api package<a class="headerlink" href="#furiosa-openapi-api-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-furiosa.openapi.api.account_v1_api">
+<span id="furiosa-openapi-api-account-v1-api-module"></span><h2>furiosa.openapi.api.account_v1_api module<a class="headerlink" href="#module-furiosa.openapi.api.account_v1_api" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.api.account_v1_api.AccountV1Api">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.api.account_v1_api.</span></code><code class="sig-name descname"><span class="pre">AccountV1Api</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.api.account_v1_api.AccountV1Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.api.compiler_v1_api">
+<span id="furiosa-openapi-api-compiler-v1-api-module"></span><h2>furiosa.openapi.api.compiler_v1_api module<a class="headerlink" href="#module-furiosa.openapi.api.compiler_v1_api" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.api.compiler_v1_api.CompilerV1Api">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.api.compiler_v1_api.</span></code><code class="sig-name descname"><span class="pre">CompilerV1Api</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.api.compiler_v1_api.CompilerV1Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.api.dss_api">
+<span id="furiosa-openapi-api-dss-api-module"></span><h2>furiosa.openapi.api.dss_api module<a class="headerlink" href="#module-furiosa.openapi.api.dss_api" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.api.dss_api.DssApi">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.api.dss_api.</span></code><code class="sig-name descname"><span class="pre">DssApi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.api.dss_api.DssApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.api.perfeye_api">
+<span id="furiosa-openapi-api-perfeye-api-module"></span><h2>furiosa.openapi.api.perfeye_api module<a class="headerlink" href="#module-furiosa.openapi.api.perfeye_api" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.api.perfeye_api.PerfeyeApi">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.api.perfeye_api.</span></code><code class="sig-name descname"><span class="pre">PerfeyeApi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.api.perfeye_api.PerfeyeApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.api.version_api">
+<span id="furiosa-openapi-api-version-api-module"></span><h2>furiosa.openapi.api.version_api module<a class="headerlink" href="#module-furiosa.openapi.api.version_api" title="Permalink to this headline">¶</a></h2>
+<p>Furiosa AI Web Service API</p>
+<p>Furiosa AI Web Service API for Compiler and Model Tools  # noqa: E501</p>
+<p>The version of the OpenAPI document: v1alpha
+Contact: <a class="reference external" href="mailto:contact&#37;&#52;&#48;furiosa&#46;ai">contact<span>&#64;</span>furiosa<span>&#46;</span>ai</a>
+Generated by: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<dl class="py class">
+<dt id="furiosa.openapi.api.version_api.VersionApi">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">furiosa.openapi.api.version_api.</span></code><code class="sig-name descname"><span class="pre">VersionApi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#furiosa.openapi.api.version_api.VersionApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NOTE: This class is auto generated by OpenAPI Generator
+Ref: <a class="reference external" href="https://openapi-generator.tech">https://openapi-generator.tech</a></p>
+<p>Do not edit the class manually.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-furiosa.openapi.api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-furiosa.openapi.api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="furiosa.openapi.apis.html" class="btn btn-neutral float-right" title="furiosa.openapi.apis package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="furiosa.openapi.html" class="btn btn-neutral float-left" title="furiosa.openapi package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, FuriosaAI.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

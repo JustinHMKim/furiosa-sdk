@@ -1,0 +1,45 @@
+quantizer.frontend.onnx.utils package
+=====================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   quantizer.frontend.onnx.utils.legacy
+
+Submodules
+----------
+
+quantizer.frontend.onnx.utils.check\_model module
+-------------------------------------------------
+
+.. automodule:: quantizer.frontend.onnx.utils.check_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantizer.frontend.onnx.utils.inference\_shape module
+-----------------------------------------------------
+
+.. automodule:: quantizer.frontend.onnx.utils.inference_shape
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+quantizer.frontend.onnx.utils.version\_checker module
+-----------------------------------------------------
+
+.. automodule:: quantizer.frontend.onnx.utils.version_checker
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: quantizer.frontend.onnx.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,10 @@
+quantizer.scripts package
+=========================
+
+Module contents
+---------------
+
+.. automodule:: quantizer.scripts
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,21 @@
+furiosa.client package
+======================
+
+Submodules
+----------
+
+furiosa.client.compiler module
+------------------------------
+
+.. automodule:: furiosa.client.compiler
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: furiosa.client
+   :members:
+   :undoc-members:
+   :show-inheritance:

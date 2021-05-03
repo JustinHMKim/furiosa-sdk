@@ -1,22 +1,21 @@
-Quantizer
-=========
+quantizer package
+=================
 
-Onnx
-----
+Subpackages
+-----------
 
-.. automodule:: furiosa.quantizer.frontend.onnx.__init__
+.. toctree::
+   :maxdepth: 4
+
+   quantizer.frontend
+   quantizer.interfaces
+   quantizer.ir
+   quantizer.scripts
+
+Module contents
+---------------
+
+.. automodule:: quantizer
    :members:
    :undoc-members:
-
-IR
---
-
-.. automodule:: furiosa.quantizer.ir.common.operator
-   :members:
-   :undoc-members:
-
-Spec
-----
-
-.. automodule:: furiosa.quantizer.ir.spec.__init__
-   :members:
+   :show-inheritance:

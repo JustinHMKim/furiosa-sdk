@@ -1,0 +1,53 @@
+furiosa.openapi.api package
+===========================
+
+Submodules
+----------
+
+furiosa.openapi.api.account\_v1\_api module
+-------------------------------------------
+
+.. automodule:: furiosa.openapi.api.account_v1_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.api.compiler\_v1\_api module
+--------------------------------------------
+
+.. automodule:: furiosa.openapi.api.compiler_v1_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.api.dss\_api module
+-----------------------------------
+
+.. automodule:: furiosa.openapi.api.dss_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.api.perfeye\_api module
+---------------------------------------
+
+.. automodule:: furiosa.openapi.api.perfeye_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.api.version\_api module
+---------------------------------------
+
+.. automodule:: furiosa.openapi.api.version_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: furiosa.openapi.api
+   :members:
+   :undoc-members:
+   :show-inheritance:

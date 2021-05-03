@@ -1,0 +1,10 @@
+furiosa.openapi.apis package
+============================
+
+Module contents
+---------------
+
+.. automodule:: furiosa.openapi.apis
+   :members:
+   :undoc-members:
+   :show-inheritance:

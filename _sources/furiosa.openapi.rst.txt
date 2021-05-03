@@ -1,0 +1,64 @@
+furiosa.openapi package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   furiosa.openapi.api
+   furiosa.openapi.apis
+   furiosa.openapi.model
+   furiosa.openapi.models
+
+Submodules
+----------
+
+furiosa.openapi.api\_client module
+----------------------------------
+
+.. automodule:: furiosa.openapi.api_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.configuration module
+------------------------------------
+
+.. automodule:: furiosa.openapi.configuration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.exceptions module
+---------------------------------
+
+.. automodule:: furiosa.openapi.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.model\_utils module
+-----------------------------------
+
+.. automodule:: furiosa.openapi.model_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.openapi.rest module
+---------------------------
+
+.. automodule:: furiosa.openapi.rest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: furiosa.openapi
+   :members:
+   :undoc-members:
+   :show-inheritance:

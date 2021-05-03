@@ -1,0 +1,10 @@
+furiosa.runtime.errors package
+==============================
+
+Module contents
+---------------
+
+.. automodule:: furiosa.runtime.errors
+   :members:
+   :undoc-members:
+   :show-inheritance:

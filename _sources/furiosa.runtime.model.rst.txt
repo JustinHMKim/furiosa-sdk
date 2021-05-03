@@ -1,0 +1,10 @@
+furiosa.runtime.model package
+=============================
+
+Module contents
+---------------
+
+.. automodule:: furiosa.runtime.model
+   :members:
+   :undoc-members:
+   :show-inheritance:
