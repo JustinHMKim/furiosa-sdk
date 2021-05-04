@@ -1,21 +1,21 @@
-quantizer.frontend.onnx.spec package
+furiosa.quantizer.interfaces package
 ====================================
 
 Submodules
 ----------
 
-quantizer.frontend.onnx.spec.export\_spec module
+furiosa.quantizer.interfaces.export\_spec module
 ------------------------------------------------
 
-.. automodule:: quantizer.frontend.onnx.spec.export_spec
+.. automodule:: furiosa.quantizer.interfaces.export_spec
    :members:
    :undoc-members:
    :show-inheritance:
 
-quantizer.frontend.onnx.spec.spec\_utils module
+furiosa.quantizer.interfaces.transformer module
 -----------------------------------------------
 
-.. automodule:: quantizer.frontend.onnx.spec.spec_utils
+.. automodule:: furiosa.quantizer.interfaces.transformer
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ quantizer.frontend.onnx.spec.spec\_utils module
 Module contents
 ---------------
 
-.. automodule:: quantizer.frontend.onnx.spec
+.. automodule:: furiosa.quantizer.interfaces
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,0 +1,10 @@
+furiosa.quantizer.scripts package
+=================================
+
+Module contents
+---------------
+
+.. automodule:: furiosa.quantizer.scripts
+   :members:
+   :undoc-members:
+   :show-inheritance:

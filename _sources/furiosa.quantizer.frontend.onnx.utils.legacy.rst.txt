@@ -1,0 +1,21 @@
+furiosa.quantizer.frontend.onnx.utils.legacy package
+====================================================
+
+Submodules
+----------
+
+furiosa.quantizer.frontend.onnx.utils.legacy.inference\_shape module
+--------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.utils.legacy.inference_shape
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.utils.legacy
+   :members:
+   :undoc-members:
+   :show-inheritance:

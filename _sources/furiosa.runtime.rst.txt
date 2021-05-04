@@ -12,6 +12,41 @@ Subpackages
    furiosa.runtime.session
    furiosa.runtime.tensor
 
+Submodules
+----------
+
+furiosa.runtime.errors module
+-----------------------------
+
+.. automodule:: furiosa.runtime.errors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.runtime.model module
+----------------------------
+
+.. automodule:: furiosa.runtime.model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.runtime.session module
+------------------------------
+
+.. automodule:: furiosa.runtime.session
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.runtime.tensor module
+-----------------------------
+
+.. automodule:: furiosa.runtime.tensor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

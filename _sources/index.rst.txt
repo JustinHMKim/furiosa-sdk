@@ -1,18 +1,16 @@
-.. furiosa documentation master file, created by
-   sphinx-quickstart on Mon May  3 13:47:21 2021.
+.. src documentation master file, created by
+   sphinx-quickstart on Tue May  4 09:11:51 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to furiosa's documentation!
-===================================
+Welcome to FuriosaAI Python SDK's documentation!
+================================================
 
 .. toctree::
    :maxdepth: 4
    :caption: Contents:
 
    furiosa
-   quantizer
-   runtime
 
 
 Indices and tables

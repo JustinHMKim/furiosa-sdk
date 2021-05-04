@@ -1,0 +1,61 @@
+furiosa.quantizer.frontend.onnx.transformer.deprecated package
+==============================================================
+
+Submodules
+----------
+
+furiosa.quantizer.frontend.onnx.transformer.deprecated.eliminate\_detection\_postprocess module
+-----------------------------------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated.eliminate_detection_postprocess
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.quantizer.frontend.onnx.transformer.deprecated.eliminate\_identity module
+---------------------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated.eliminate_identity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.quantizer.frontend.onnx.transformer.deprecated.eliminate\_softmax\_output module
+----------------------------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated.eliminate_softmax_output
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.quantizer.frontend.onnx.transformer.deprecated.fuse\_reshape\_into\_initializer module
+----------------------------------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated.fuse_reshape_into_initializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.quantizer.frontend.onnx.transformer.deprecated.fuse\_scalar\_mul\_into\_conv module
+-------------------------------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated.fuse_scalar_mul_into_conv
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+furiosa.quantizer.frontend.onnx.transformer.deprecated.fuse\_softmax module
+---------------------------------------------------------------------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated.fuse_softmax
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: furiosa.quantizer.frontend.onnx.transformer.deprecated
+   :members:
+   :undoc-members:
+   :show-inheritance:
