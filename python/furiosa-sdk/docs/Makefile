@@ -21,15 +21,20 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 doc:
-	mkdir -p $(BUILDDIR)/$(FURIOSADOCS)
-	cp -a ../../furiosa-sdk-runtime/furiosa_sdk_runtime $(BUILDDIR)/$(FURIOSADOCS)/runtime
-	cp -a ../../furiosa-sdk-quantizer/furiosa_sdk_quantizer $(BUILDDIR)/$(FURIOSADOCS)/quantizer
-	cp -a ../furiosa $(BUILDDIR)/$(FURIOSADOCS)
-	sphinx-apidoc -F $(BUILDDIR)/$(FURIOSADOCS) -o .
+	mkdir -p $(BUILDDIR)/src/$(FURIOSADOCS)
+	cp -a ../../furiosa-sdk-runtime/furiosa_sdk_runtime $(BUILDDIR)/src/$(FURIOSADOCS)/runtime
+	cp -a ../../furiosa-sdk-quantizer/furiosa_sdk_quantizer $(BUILDDIR)/src/$(FURIOSADOCS)/quantizer
+	cp -a ../furiosa $(BUILDDIR)/src
+	for redundancies in $(BUILDDIR)/src/$(FURIOSADOCS)/runtime/*.py; do \
+	   echo $${redundancies%.*} ; \
+	   rm -rf $${redundancies%.*} ; \
+	done
+	sphinx-apidoc -o . $(BUILDDIR)/src $(BUILDDIR)/src/$(FURIOSADOCS)/runtime/errors/*
 	make html
 	
 
 clean:
 	rm -rf $(BUILDDIR)
 	rm -rf $(FURIOSADOCS)
-	rm *.rst
+	rm furiosa.*.rst
+	rm modules.rst
