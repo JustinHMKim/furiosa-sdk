@@ -26,7 +26,6 @@ doc:
 	cp -a ../../furiosa-sdk-quantizer/furiosa_sdk_quantizer $(BUILDDIR)/src/$(FURIOSADOCS)/quantizer
 	cp -a ../furiosa $(BUILDDIR)/src
 	for redundancies in $(BUILDDIR)/src/$(FURIOSADOCS)/runtime/*.py; do \
-	   echo $${redundancies%.*} ; \
 	   rm -rf $${redundancies%.*} ; \
 	done
 	sphinx-apidoc -o . $(BUILDDIR)/src $(BUILDDIR)/src/$(FURIOSADOCS)/runtime/errors/*
